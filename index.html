@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Ahmed Nazir Shaikh | Robotics Engineer &amp; ML Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Code:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#080808;--dark:#111111;--dark2:#181818;--fuchsia:#FF2D78;--f2:rgba(255,45,120,0.1);--white:#F0F0F0;--off:#777777;--border:rgba(255,255,255,0.07);--green:#00E5A0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+#cur{position:fixed;width:18px;height:18px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+#cur::before,#cur::after{content:'';position:absolute;background:var(--white)}
+#cur::before{width:18px;height:1px;top:50%;left:0;transform:translateY(-50%)}
+#cur::after{width:1px;height:18px;left:50%;top:0;transform:translateX(-50%)}
+#cur-ring{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,45,120,0.45);transition:width .3s cubic-bezier(.23,1,.32,1),height .3s,opacity .3s,border-color .3s}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:64px;height:64px;border-color:var(--fuchsia);opacity:1}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(8,8,8,0.92);backdrop-filter:blur(20px)}
+.nav-mark{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:0.14em;color:var(--white);text-decoration:none}
+.nav-mark span{color:var(--fuchsia)}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{font-family:'Fira Code',monospace;font-size:0.63rem;color:var(--off);text-decoration:none;letter-spacing:0.15em;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{padding:9px 22px;border:1px solid var(--fuchsia);border-radius:2px;font-family:'Fira Code',monospace;font-size:0.63rem;color:var(--fuchsia);text-decoration:none;letter-spacing:0.1em;transition:background .2s,color .2s}
+.nav-cta:hover{background:var(--fuchsia);color:var(--black)}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 10vw 100px}
+#stream-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-content{position:relative;z-index:2;max-width:900px;padding-top:100px}
+.hero-label{font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--fuchsia);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s .2s forwards}
+.hero-label::before{content:'';width:32px;height:1px;background:var(--fuchsia);display:block}
+h1.name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,13vw,12rem);line-height:.88;letter-spacing:0.02em;color:var(--white);opacity:0;animation:up .8s .35s forwards}
+h1.name .line2{color:transparent;-webkit-text-stroke:1px var(--white)}
+h1.name .line2 em{-webkit-text-stroke:1px var(--fuchsia);color:transparent;font-style:normal}
+.hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-top:36px;flex-wrap:wrap;opacity:0;animation:up .8s .6s forwards}
+.hero-bio p{font-size:1rem;line-height:1.8;color:var(--off);font-weight:300;max-width:480px}
+.hero-bio p strong{color:var(--white);font-weight:400}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px;flex-shrink:0}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.pill{padding:6px 16px;border:1px solid var(--border);border-radius:100px;font-family:'Fira Code',monospace;font-size:0.63rem;color:var(--off);letter-spacing:0.06em;transition:border-color .2s,color .2s}
+.pill:hover{border-color:var(--fuchsia);color:var(--fuchsia)}
+.pill.hot{border-color:rgba(255,45,120,0.35);color:var(--fuchsia);background:var(--f2)}
+.hero-ctas{display:flex;gap:12px}
+.btn-f{padding:13px 30px;background:var(--fuchsia);color:var(--black);font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:500;text-decoration:none;letter-spacing:0.06em;border:none;cursor:none;transition:opacity .2s,transform .2s}
+.btn-f:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-g{padding:13px 30px;border:1px solid var(--border);color:var(--white);font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:300;text-decoration:none;letter-spacing:0.06em;transition:border-color .2s}
+.btn-g:hover{border-color:var(--white)}
+.scroll-line{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off);letter-spacing:0.2em;animation:bob 2.5s infinite;z-index:2}
+.scroll-line::after{content:'';width:1px;height:44px;background:linear-gradient(to bottom,var(--off),transparent);display:block}
+
+/* NUMBERS */
+#numbers{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.num-cell{padding:32px 40px;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.num-cell:last-child{border-right:none}
+.num-cell::before{content:'';position:absolute;inset:0;background:var(--f2);opacity:0;transition:opacity .3s}
+.num-cell:hover::before{opacity:1}
+.num-v{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--white);letter-spacing:0.04em;line-height:1}
+.num-v span{color:var(--fuchsia);font-size:0.6em}
+.num-l{font-family:'Fira Code',monospace;font-size:0.6rem;color:var(--off);letter-spacing:0.12em;text-transform:uppercase;margin-top:6px}
+
+/* SECTIONS */
+section{padding:110px 10vw;position:relative}
+.sec-kicker{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--fuchsia);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-kicker::before{content:'//';color:var(--off)}
+h2.sh{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,5rem);letter-spacing:0.04em;color:var(--white);line-height:0.95;margin-bottom:64px}
+h2.sh em{font-style:normal;color:var(--fuchsia);font-family:'Libre Baskerville',serif;font-style:italic;font-weight:400;font-size:0.8em}
+
+/* ABOUT */
+#about{background:var(--black)}
+.about-split{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:1rem;line-height:1.85;color:var(--off);margin-bottom:18px}
+.about-text p strong{color:var(--white);font-weight:400}
+.about-accent{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.2rem;color:var(--white);line-height:1.6;margin-bottom:24px;border-left:2px solid var(--fuchsia);padding-left:20px}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.t-chip{padding:5px 14px;border:1px solid var(--border);border-radius:100px;font-family:'Fira Code',monospace;font-size:0.62rem;color:var(--off);transition:all .2s;cursor:default}
+.t-chip:hover{border-color:var(--fuchsia);color:var(--fuchsia);background:var(--f2)}
+.edu-cards{display:flex;flex-direction:column;gap:2px}
+.edu-card{background:var(--dark);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;transition:border-color .3s}
+.edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--fuchsia);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.edu-card:hover{border-color:rgba(255,45,120,0.3)}
+.edu-card:hover::before{transform:scaleY(1)}
+.edu-school{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.06em;color:var(--white);margin-bottom:4px}
+.edu-deg{font-size:0.85rem;color:var(--off);margin-bottom:10px}
+.edu-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.edu-gpa{font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--fuchsia)}
+.edu-yr{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--off)}
+.edu-roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.role-badge{padding:3px 10px;border-radius:2px;font-family:'Fira Code',monospace;font-size:0.6rem;color:var(--green);background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2)}
+.courses-block{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.courses-label{font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px}
+.courses-pills{display:flex;flex-wrap:wrap;gap:5px}
+.c-pill{padding:2px 9px;border:1px solid var(--border);border-radius:2px;font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off)}
+
+/* SKILLS */
+#skills{background:var(--dark)}
+.skills-table{width:100%;border-collapse:collapse}
+.skills-table tr{border-bottom:1px solid var(--border);transition:background .3s}
+.skills-table tr:nth-child(1):hover{background:rgba(255,45,120,0.05)}
+.skills-table tr:nth-child(2):hover{background:rgba(79,195,247,0.05)}
+.skills-table tr:nth-child(3):hover{background:rgba(167,139,250,0.05)}
+.skills-table tr:nth-child(4):hover{background:rgba(249,115,22,0.05)}
+.skills-table tr:nth-child(5):hover{background:rgba(52,211,153,0.05)}
+.skills-table tr:nth-child(6):hover{background:rgba(250,204,21,0.05)}
+.skills-table tr:first-child{border-top:1px solid var(--border)}
+.st-cat{padding:22px 0 22px 0;font-family:'Fira Code',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;width:220px;vertical-align:top;padding-top:26px}
+.st-cat.c1{color:#FF2D78}.st-cat.c2{color:#4FC3F7}.st-cat.c3{color:#A78BFA}.st-cat.c4{color:#F97316}.st-cat.c5{color:#34D399}.st-cat.c6{color:#FACC15}
+.sk.c1:hover{border-color:#FF2D78;color:#FF2D78}.sk.c2:hover{border-color:#4FC3F7;color:#4FC3F7}
+.sk.c3:hover{border-color:#A78BFA;color:#A78BFA}.sk.c4:hover{border-color:#F97316;color:#F97316}
+.sk.c5:hover{border-color:#34D399;color:#34D399}.sk.c6:hover{border-color:#FACC15;color:#FACC15}
+.st-items{padding:22px 0 22px 32px;vertical-align:top}
+.st-grid{display:flex;flex-wrap:wrap;gap:8px}
+.sk{padding:6px 14px;border:1px solid var(--border);border-radius:2px;font-size:0.85rem;color:var(--off);transition:all .2s;cursor:default}
+.sk:hover{border-color:var(--white);color:var(--white)}
+
+/* RESEARCH / PUBS */
+#pubs{background:var(--black)}
+.pub-list{display:flex;flex-direction:column;gap:0}
+.pub-item{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;padding:44px 0;border-bottom:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.pub-item:first-child{border-top:1px solid var(--border)}
+.pub-item.vis{opacity:1;transform:translateY(0)}
+.pub-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;line-height:1}
+.pub-logo.ieee{color:#4FC3F7}
+.pub-logo.spr{color:var(--fuchsia)}
+.pub-logo.conf{color:var(--green)}
+.pub-year{font-family:'Fira Code',monospace;font-size:0.6rem;color:var(--off);margin-top:6px}
+.pub-title{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.35}
+.pub-desc{font-size:0.88rem;line-height:1.8;color:var(--off);margin-bottom:16px;max-width:640px}
+.pub-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pub-chip{padding:3px 10px;border:1px solid var(--border);border-radius:2px;font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off)}
+.pub-action{display:flex;align-items:flex-start;padding-top:4px}
+.pub-link{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--fuchsia);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:16px;border:1px solid rgba(255,45,120,0.25);padding:7px 16px;width:fit-content;transition:background .2s,border-color .2s,gap .2s}
+.pub-link:hover{border-color:var(--fuchsia);background:var(--f2)}
+
+/* EXPERIENCE */
+#exp{background:var(--dark)}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:48px;padding:44px 0;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
+.exp-item:first-child{border-top:1px solid var(--border)}
+.exp-item.vis{opacity:1;transform:translateX(0)}
+.exp-period{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--off);line-height:1.7;padding-top:3px}
+.exp-now{display:inline-block;margin-top:8px;padding:2px 8px;background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);border-radius:2px;font-size:0.58rem;color:var(--green);letter-spacing:0.1em;text-transform:uppercase}
+.exp-role{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);line-height:1;margin-bottom:4px}
+.exp-org{font-family:'Fira Code',monospace;font-size:0.7rem;color:var(--fuchsia);letter-spacing:0.08em;margin-bottom:16px}
+.exp-buls{list-style:none;display:flex;flex-direction:column;gap:9px}
+.exp-buls li{font-size:0.9rem;line-height:1.75;color:var(--off);padding-left:18px;position:relative}
+.exp-buls li::before{content:'→';position:absolute;left:0;color:var(--fuchsia);font-size:0.75rem;top:2px}
+.exp-buls li strong{color:var(--white);font-weight:400}
+
+/* PROJECTS */
+#projects{background:var(--black)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.proj-card{background:var(--black);padding:40px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .3s}
+.proj-card:hover{background:var(--dark)}
+.proj-top-bar{position:absolute;top:0;left:0;right:0;height:1px;background:var(--fuchsia);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.23,1,.32,1)}
+.proj-card:hover .proj-top-bar{transform:scaleX(1)}
+.proj-idx{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,45,120,0.06);line-height:1;margin-bottom:14px;transition:color .3s}
+.proj-card:hover .proj-idx{color:rgba(255,45,120,0.18)}
+.proj-name{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.35}
+.proj-desc{font-size:0.85rem;line-height:1.8;color:var(--off);flex:1;margin-bottom:18px}
+.proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.proj-tech{padding:3px 9px;border:1px solid var(--border);border-radius:2px;font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off)}
+.proj-lnk{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--fuchsia);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:auto;border:1px solid rgba(255,45,120,0.25);padding:7px 16px;width:fit-content;transition:background .2s,border-color .2s,gap .2s}
+.proj-lnk:hover{background:var(--f2);border-color:var(--fuchsia);gap:10px}
+
+/* CONTACT */
+#contact{background:var(--dark);padding:140px 10vw;text-align:center;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 110%,rgba(255,45,120,0.07),transparent);pointer-events:none}
+.contact-pre{font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--fuchsia);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px}
+.contact-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,7rem);letter-spacing:0.04em;color:var(--white);line-height:0.9;margin-bottom:20px}
+.contact-h em{font-style:normal;color:var(--fuchsia)}
+.contact-sub{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.1rem;color:var(--off);max-width:420px;margin:0 auto 56px;line-height:1.7}
+.contact-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.c-btn{padding:14px 28px;border:1px solid var(--border);font-family:'Fira Code',monospace;font-size:0.65rem;color:var(--off);text-decoration:none;letter-spacing:0.1em;display:flex;align-items:center;gap:9px;transition:border-color .2s,color .2s,background .2s}
+.c-btn:hover{border-color:var(--fuchsia);color:var(--fuchsia);background:var(--f2)}
+.c-btn.primary{border-color:var(--fuchsia);color:var(--fuchsia);background:var(--f2)}
+.c-btn.primary:hover{background:var(--fuchsia);color:var(--black)}
+
+footer{background:var(--black);border-top:1px solid var(--border);padding:24px 10vw;display:flex;justify-content:space-between;align-items:center;font-family:'Fira Code',monospace;font-size:0.58rem;color:var(--off)}
+
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 rgba(255,45,120,0)}50%{opacity:.6;box-shadow:0 0 10px rgba(255,45,120,.5)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:960px){
+  nav{padding:18px 24px}.nav-links{display:none}
+  section{padding:80px 6vw}
+  #hero{padding:0 6vw 80px;align-items:flex-end}
+  .about-split{grid-template-columns:1fr}
+  .pub-item{grid-template-columns:60px 1fr}.pub-action{display:none}
+  .exp-item{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  #numbers{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-mark" href="#">M<span>.</span>AHMED</a>
+  <ul class="nav-links">
+    <li><a href="#about">Profile</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#pubs">Research</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:muhammadahmed.shaikh@duke.edu">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="stream-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-label">Mechanical Engineering &nbsp;|&nbsp; Robotics &nbsp;|&nbsp; Medical Robotics &nbsp;|&nbsp; Duke University</div>
+    <h1 class="name">MUHAMMAD<br/><span class="line2">AHM<em>ED</em></span></h1>
+    <div class="hero-row">
+      <div class="hero-bio">
+        <p><strong>MS Robotics Engineer at Duke University</strong> building intelligent systems that operate on real hardware, in clinical settings, and inside autonomous robots. From multimodal deep learning at sub-50ms latency on Jetson Nano to full 6-DOF manipulation pipelines in ROS 2. I build the whole stack.</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-pills">
+          <span class="pill hot">ROS 2</span>
+          <span class="pill hot">Deep Learning</span>
+          <span class="pill hot">Signal Processing</span>
+          <span class="pill">MoveIt 2</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">Edge AI</span>
+          <span class="pill">Medical Robotics</span>
+          <span class="pill">Sensor Fusion</span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn-f" href="#projects">View Work</a>
+          <a class="btn-g" href="#contact">Let&rsquo;s Talk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-line">scroll</div>
+</section>
+
+<!-- NUMBERS -->
+<div id="numbers">
+  <div class="num-cell"><div class="num-v">3.74<span>/4</span></div><div class="num-l">Duke GPA</div></div>
+  <div class="num-cell"><div class="num-v">87<span>%</span></div><div class="num-l">Emotion AI accuracy</div></div>
+  <div class="num-cell"><div class="num-v">&lt;50<span>ms</span></div><div class="num-l">Clinical inference latency</div></div>
+  <div class="num-cell"><div class="num-v">4<span>+</span></div><div class="num-l">Robotics systems shipped</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-kicker">Profile</div>
+  <h2 class="sh">Who I <em>am</em></h2>
+  <div class="about-split">
+    <div class="about-text reveal">
+      <p class="about-accent">I build systems that operate in the real world |  on actual hardware, in actual clinical contexts, with actual constraints.</p>
+      <p>I&rsquo;m an <strong>MS candidate at Duke University (Pratt School of Engineering)</strong>, working at the intersection of robotics, embedded systems, and applied machine learning. My work spans complete ROS 2 manipulation pipelines on the Kinova Gen3 to multimodal deep learning deployed at sub-50ms latency on NVIDIA Jetson Nano.</p>
+      <p>My work spans the full robotics-ML stack: <strong>biomedical signal processing</strong> (IMU, sEMG, PPG, GSR), <strong>CNN architecture design</strong> for real-time clinical inference, autonomous 6-DOF manipulation with MoveIt 2, and production-grade edge deployment on Jetson Nano and ESP32.</p>
+      <p>Teaching isn&rsquo;t a side role |  four TA positions across Robotics &amp; Automation, Experimental Design, and Thermodynamics shape how I think about communicating hard technical ideas clearly.</p>
+      <div class="tag-cloud">
+        <span class="t-chip">Medical Robotics</span>
+        <span class="t-chip">ROS 2</span>
+        <span class="t-chip">Deep Learning</span>
+        <span class="t-chip">Signal Processing</span>
+        <span class="t-chip">Edge AI</span>
+        <span class="t-chip">Sensor Fusion</span>
+        <span class="t-chip">Motion Planning</span>
+        <span class="t-chip">Computer Vision</span>
+      </div>
+    </div>
+    <div class="edu-cards reveal d2">
+      <div class="edu-card">
+        <div class="edu-school">Duke University</div>
+        <div class="edu-deg">M.S. Mechanical Engineering &amp; Materials Science |  Durham, NC</div>
+        <div class="edu-row">
+          <span class="edu-gpa">GPA 3.74 / 4.00</span>
+          <span class="edu-yr">2024 &ndash; 2026</span>
+        </div>
+        <div class="edu-roles">
+          <span class="role-badge">TA - Robotics &amp; Automation</span>
+          <span class="role-badge">TA - Experimental Design</span>
+          <span class="role-badge">TA - Thermodynamics</span>
+          <span class="role-badge">Junior R&amp;D Engineer</span>
+        </div>
+        <div class="courses-block">
+          <div class="courses-label">Key Coursework</div>
+          <div class="courses-pills">
+            <span class="c-pill">AI in the Physical World</span>
+            <span class="c-pill">Robotic Manipulation</span>
+            <span class="c-pill">Medical Robotics I &amp; II</span>
+            <span class="c-pill">Scientific Computing &amp; ML</span>
+            <span class="c-pill">Ethics in Robotics</span>
+            <span class="c-pill">Biomedical Microsystems</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-card" style="margin-top:2px">
+        <div class="edu-school">S.R.M. Institute of Science &amp; Technology</div>
+        <div class="edu-deg">B.Tech Mechanical Engineering - Chennai, India</div>
+        <div class="edu-row">
+          <span class="edu-gpa">CGPA 8.18 / 10.00</span>
+          <span class="edu-yr">2019 &ndash; 2023</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-kicker">Technical Skills</div>
+  <h2 class="sh reveal">What I <em>know</em></h2>
+  <table class="skills-table">
+    <tr>
+      <td class="st-cat c1">Robotics &amp; Autonomy</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c1">ROS 2 (Humble)</span>
+        <span class="sk c1">MoveIt 2</span>
+        <span class="sk c1">Gazebo</span>
+        <span class="sk c1">RViz</span>
+        <span class="sk c1">Motion Planning</span>
+        <span class="sk c1">Cartesian Planning</span>
+        <span class="sk c1">FK / IK</span>
+        <span class="sk c1">Jacobian Analysis</span>
+        <span class="sk c1">Control Theory</span>
+        <span class="sk c1">6-DOF Manipulation</span>
+      </div></td>
+    </tr>
+    <tr>
+      <td class="st-cat c2">ML &amp; Deep Learning</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c2">TensorFlow</span>
+        <span class="sk c2">CNN Architecture Design</span>
+        <span class="sk c2">Multimodal Sensor Fusion</span>
+        <span class="sk c2">OpenCV</span>
+        <span class="sk c2">Real-Time Inference</span>
+        <span class="sk c2">Edge Deployment</span>
+        <span class="sk c2">scikit-learn</span>
+        <span class="sk c2">Keras</span>
+        <span class="sk c2">Feature Engineering</span>
+        <span class="sk c2">PyTorch</span>
+      </div></td>
+    </tr>
+    <tr>
+      <td class="st-cat c3">Biomedical Signals</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c3">IMU (Inertial Measurement)</span>
+        <span class="sk c3">sEMG (Surface EMG)</span>
+        <span class="sk c3">PPG (Photoplethysmography)</span>
+        <span class="sk c3">GSR (Galvanic Skin Response)</span>
+        <span class="sk c3">Bandpass Filtering</span>
+        <span class="sk c3">Windowed Classification</span>
+        <span class="sk c3">Time-Series Analysis</span>
+        <span class="sk c3">Tremor Characterisation</span>
+        <span class="sk c3">Gait Analysis at 50 Hz</span>
+      </div></td>
+    </tr>
+    <tr>
+      <td class="st-cat c4">Edge &amp; Embedded</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c4">NVIDIA Jetson Nano</span>
+        <span class="sk c4">ESP32</span>
+        <span class="sk c4">Kinova Gen3 Lite</span>
+        <span class="sk c4">Arduino</span>
+        <span class="sk c4">PCB Debugging</span>
+        <span class="sk c4">Accelerometers</span>
+        <span class="sk c4">3D Printing</span>
+        <span class="sk c4">CNC Machining</span>
+        <span class="sk c4">Laser Cutting</span>
+      </div></td>
+    </tr>
+    <tr>
+      <td class="st-cat c5">Languages</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c5">Python</span>
+        <span class="sk c5">NumPy</span>
+        <span class="sk c5">pandas</span>
+        <span class="sk c5">C / C++</span>
+        <span class="sk c5">MATLAB</span>
+        <span class="sk c5">Simulink</span>
+      </div></td>
+    </tr>
+    <tr>
+      <td class="st-cat c6">Dev Tools &amp; Design</td>
+      <td class="st-items"><div class="st-grid">
+        <span class="sk c6">Docker</span>
+        <span class="sk c6">Linux / Ubuntu</span>
+        <span class="sk c6">Git / GitHub</span>
+        <span class="sk c6">SolidWorks</span>
+        <span class="sk c6">Fusion 360</span>
+        <span class="sk c6">AutoCAD</span>
+        <span class="sk c6">FEA</span>
+        <span class="sk c6">DFM</span>
+      </div></td>
+    </tr>
+  </table>
+</section>
+
+<!-- RESEARCH -->
+<section id="pubs">
+  <div class="sec-kicker">Research</div>
+  <h2 class="sh reveal">Published <em>work</em></h2>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div>
+        <div class="pub-logo conf" style="color:#FF2D78;font-size:1.1rem;letter-spacing:0.04em">SAGE</div>
+        <div class="pub-year">2024</div>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title">Tribo-Corrosion and Mechanical Performance of Electro-deposited Nano-Composite h-BN/Epoxy Coating</div>
+        <p class="pub-desc">Characterised electro-deposited nanocomposite hybrid coatings incorporating hBN and Epoxy in a nickel matrix for underwater anti-corrosion and anti-wear applications. Optimised via Taguchi method. Surface characterisation via XRD, FTIR, water contact angle, and crosshatch adhesion testing. Corrosion and wear resistance evaluated through electrochemical impedance spectroscopy (EIS) and pin-on-disc tribometry. Results demonstrate that incorporating hBN nanoparticles significantly enhances mechanical, tribological, and corrosion properties. Published in Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology.</p>
+        <div class="pub-chips">
+          <span class="pub-chip">Tribology</span>
+          <span class="pub-chip">EIS</span>
+          <span class="pub-chip">FTIR / XRD</span>
+          <span class="pub-chip">hBN Nanoparticles</span>
+          <span class="pub-chip">Epoxy Coating</span>
+          <span class="pub-chip">Taguchi Method</span>
+          <span class="pub-chip">Corrosion Science</span>
+          <span class="pub-chip">SAGE Journals</span>
+        </div>
+        <a class="pub-link" href="https://journals.sagepub.com/doi/10.1177/13506501241257560" target="_blank">READ PAPER &#8599;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="exp">
+  <div class="sec-kicker">Experience</div>
+  <h2 class="sh reveal">Where I&rsquo;ve <em>worked</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-period">Jan 2026<br/>&rarr; Present<div class="exp-now">Current</div></div>
+      <div class="exp-info">
+        <div class="exp-role">Teaching Assistant | Robotics &amp; Automation</div>
+        <div class="exp-org">Duke University |  Pratt School of Engineering</div>
+        <ul class="exp-buls">
+          <li>Support students across simulation, kinematics, control, sensing, motion planning, and system integration.</li>
+          <li>Hold office hours and lab sessions to help students troubleshoot <strong>ROS-based assignments</strong>, simulations, and full robotics workflows.</li>
+          <li>Mentor teams on midterm and final projects | problem formulation, implementation, testing, and clean documentation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Jun 2025<br/>&rarr; Present<div class="exp-now">Current</div></div>
+      <div class="exp-info">
+        <div class="exp-role">Junior R&amp;D Engineer</div>
+        <div class="exp-org">Duke University |  Wilkinson Garage Lab</div>
+        <ul class="exp-buls">
+          <li>Contributing to robotics and medical robotics projects | prototyping assistive devices, integrating sensors, and refining control mechanisms for rehabilitation and healthcare technology.</li>
+          <li>Provides technical support for student and faculty research; fabricates and troubleshoots using <strong>3D printers, CNC machines, laser cutters, and electronics workbenches</strong>.</li>
+          <li>Trains and mentors students on safe and effective lab equipment use.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Aug 2025<br/>&rarr; Dec 2025</div>
+      <div class="exp-info">
+        <div class="exp-role">Teaching Assistant | Experimental Design &amp; Research Methods</div>
+        <div class="exp-org">Duke University |  Pratt School of Engineering</div>
+        <ul class="exp-buls">
+          <li>Mentored graduate capstone teams through the full engineering design cycle: problem framing, concept generation, trade-off analysis, prototyping, and iteration.</li>
+          <li>Helped teams design rigorous experiments | hypotheses, variables, controls, success metrics, and repeatable test protocols.</li>
+          <li>Delivered detailed feedback on weekly presentations and reviewed final reports, posters, and online portfolios. Supported execution with <strong>Gantt/Kanban milestone planning</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Aug 2024<br/>&rarr; Dec 2024</div>
+      <div class="exp-info">
+        <div class="exp-role">Teaching Assistant | Thermodynamics</div>
+        <div class="exp-org">Duke University |  Pratt School of Engineering</div>
+        <ul class="exp-buls">
+          <li>Supported students in energy systems, the laws of thermodynamics, and engineering applications through review lectures and problem-solving sessions.</li>
+          <li>Provided individual office hours and constructive feedback; bridged theoretical concepts with real-world engineering applications.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Apr 2022<br/>&rarr; Sep 2023</div>
+      <div class="exp-info">
+        <div class="exp-role">Research Assistant |  Materials Science &amp; Tribology</div>
+        <div class="exp-org">S.R.M. Institute of Science and Technology |  Chennai, India</div>
+        <ul class="exp-buls">
+          <li>Conducted experimental research in tribology and materials science | surface interactions, wear analysis, and corrosion prevention achieving <strong>30% higher corrosion resistance</strong> and <strong>25% reduced wear</strong>.</li>
+          <li><strong>Co-authored multiple research papers</strong> published and presented at national and international conferences.</li>
+          <li>Mentored 10+ undergrad and PhD researchers in FTIR spectroscopy, surface morphology analysis, and lab safety protocols.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-kicker">Projects</div>
+  <h2 class="sh reveal">Things I&rsquo;ve <em>built</em></h2>
+  <div class="proj-grid">
+
+    <div class="proj-card reveal">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">01</div>
+      <div class="proj-name">NeuroBot | Emotion AI Companion</div>
+      <p class="proj-desc">Neuro-adaptive robotic companion integrating GSR, CNN-based facial recognition (OpenCV), IMU and PPG on NVIDIA Jetson Nano. TensorFlow CNN for multimodal physiological signal fusion achieves 87% emotion classification accuracy, with 22% fewer false detections versus unimodal baselines. Full ROS 2 perception-to-actuation pipeline for clinical rehabilitation.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">TensorFlow</span><span class="proj-tech">OpenCV</span><span class="proj-tech">CNN</span>
+        <span class="proj-tech">GSR / IMU / PPG</span><span class="proj-tech">Jetson Nano</span><span class="proj-tech">ROS 2</span>
+      </div>
+      <a class="proj-lnk" href="https://github.com/Ahmedshaikh77/Neuro-Adaptive-Robotic-Companion" target="_blank">&#8599; View on GitHub</a>
+    </div>
+
+    <div class="proj-card reveal d2">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">02</div>
+      <div class="proj-name">Beer Pong Robot | Kinova Gen3</div>
+      <p class="proj-desc">Complete beer-pong throwing robot on Kinova Gen3 Lite, from motion concept to a repeatable demo-ready pipeline. End-to-end ROS 2 workflow: trajectory generation, high-speed execution, and precisely-timed ball release for a consistent arc to target cup. Modular nodes with clean separation of trajectory generation, execution control, and tunable parameters. Validated with RViz/MoveIt.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">ROS 2</span><span class="proj-tech">MoveIt 2</span><span class="proj-tech">Python</span>
+        <span class="proj-tech">Trajectory Opt.</span><span class="proj-tech">RViz</span><span class="proj-tech">Kinova Gen3 Lite</span>
+      </div>
+      <a class="proj-lnk" href="https://github.com/Ahmedshaikh77/KinovaGen3-Beer-Pong" target="_blank">&#8599; View on GitHub</a>
+    </div>
+
+    <div class="proj-card reveal d1">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">03</div>
+      <div class="proj-name">Parkinson&#39;s DBS ML Wearable</div>
+      <p class="proj-desc">Low-energy wearable for at-home Parkinsonian tremor monitoring and adaptive Deep Brain Stimulation control. Integrates IMU, sEMG, and PPG in a real-time multimodal framework. TensorFlow ML pipeline drives patient-specific DBS therapy with 18% improvement in tremor classification accuracy and automated parameter tuning at sub-50ms feedback latency.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">TensorFlow</span><span class="proj-tech">IMU / sEMG / PPG</span><span class="proj-tech">DSP</span>
+        <span class="proj-tech">Feature Extraction</span><span class="proj-tech">DBS Control</span>
+      </div>
+      <span class="proj-lnk" style="opacity:0.38;cursor:default;border-style:dashed;pointer-events:none">Private Repository</span>
+    </div>
+
+    <div class="proj-card reveal d2">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">04</div>
+      <div class="proj-name">CRUTCH | Smart Gait Analytics</div>
+      <p class="proj-desc">Intelligent crutch system using ESP32 and accelerometers for high-resolution real-time gait analysis at 50 Hz. Novel spring-damper mechanism attenuates impact forces by 30%. Real-time kinematic and kinetic data analytics refine postural alignment and optimise pressure distribution, achieving a 15% gait efficiency improvement.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">ESP32</span><span class="proj-tech">Accelerometers</span><span class="proj-tech">Signal Processing</span>
+        <span class="proj-tech">Time-Series</span><span class="proj-tech">C / C++</span>
+      </div>
+      <a class="proj-lnk" href="https://github.com/Ahmedshaikh77/Comfortable-Responsive-Universal-Technology-for-Crutch-Health-CRUTCH" target="_blank">&#8599; View on GitHub</a>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">05</div>
+      <div class="proj-name">Write Initials | Kinova Gen3</div>
+      <p class="proj-desc">Taught a Kinova Gen3 Lite (ROS 2 + MoveIt 2 + Gazebo) to handwrite initials "MAN" on a physical whiteboard. Fine-grained Cartesian waypoints projected into 3D with automatic fallback to joint-space planning. Controlled pen tap-in for clean first contact, pen lift between strokes. Brought simulation and real-robot behaviour into close alignment via synchronous execution.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">ROS 2</span><span class="proj-tech">MoveIt 2</span><span class="proj-tech">Gazebo</span>
+        <span class="proj-tech">Cartesian Planning</span><span class="proj-tech">FK / Jacobians</span><span class="proj-tech">RViz</span>
+      </div>
+      <a class="proj-lnk" href="https://github.com/Ahmedshaikh77/KinovaGen3-Write-Initials" target="_blank">&#8599; View on GitHub</a>
+    </div>
+
+    <div class="proj-card reveal d2">
+      <div class="proj-top-bar"></div>
+      <div class="proj-idx">06</div>
+      <div class="proj-name">Pick and Place | Kinova Gen3</div>
+      <p class="proj-desc">End-to-end pick-and-place pipeline for Kinova Gen3 Lite using ROS 2, MoveIt 2, and Gazebo. Modelled full workspace in the planning scene with table and object obstacles. Planned collision-aware trajectories through a state-machine flow: approach, grasp, lift, transport, place, and retreat. Robust fallback strategies for infeasible paths. Validated in RViz with planned path previews and live TF visualisation.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">ROS 2</span><span class="proj-tech">MoveIt 2</span><span class="proj-tech">Gazebo</span>
+        <span class="proj-tech">Planning Scene</span><span class="proj-tech">Python</span><span class="proj-tech">RViz</span>
+      </div>
+      <a class="proj-lnk" href="https://github.com/Ahmedshaikh77/kinovaGen3-Pick-and-Place" target="_blank">&#8599; View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-pre">Open to opportunities |  Available May 2026</div>
+  <div class="contact-h reveal">LET&rsquo;S<br/><em>WORK</em><br/>TOGETHER</div>
+  <p class="contact-sub reveal d1">Looking for Robotics Engineer, ML Engineer, Applied Scientist, and R&amp;D roles. Open to US relocation.</p>
+  <div class="contact-row reveal d2">
+    <a class="c-btn primary" href="mailto:muhammadahmed.shaikh@duke.edu">✉ &nbsp;ms1242@duke.edu</a>
+    <a class="c-btn" href="https://linkedin.com/in/muhammad-ahmed-nazir-shaikh" target="_blank">↗ &nbsp;LinkedIn</a>
+    <a class="c-btn" href="https://github.com/Ahmedshaikh77" target="_blank">↗ &nbsp;GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <span>Muhammad Ahmed Nazir Shaikh | <a href="mailto:muhammadahmed.shaikh@duke.edu" style="color:var(--off);text-decoration:none">muhammadahmed.shaikh@duke.edu</a></span>
+  <span>MS Mechanical Engineering &middot; Duke University &middot; 2026</span>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function tick(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;cur.style.cssText='left:'+mx+'px;top:'+my+'px';ring.style.cssText='left:'+rx+'px;top:'+ry+'px';requestAnimationFrame(tick)})();
+
+/* HERO STREAM CANVAS | ROS topic / robotics path rain */
+(function(){
+  const cvs=document.getElementById('stream-canvas'),ctx=cvs.getContext('2d');
+  let W,H,cols=[];
+  const SRC='/cmd_vel/joint_states/tf/odom/imu/emg/ppg/plan/exec 0123456789abcdef,.';
+  function resize(){
+    W=cvs.width=cvs.offsetWidth;H=cvs.height=cvs.offsetHeight;
+    const n=Math.floor(W/20);
+    cols=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,speed:Math.random()*1+0.3}));
+  }
+  function draw(){
+    ctx.fillStyle='rgba(8,8,8,0.06)';ctx.fillRect(0,0,W,H);
+    ctx.font='11px Fira Code,monospace';
+    cols.forEach(c=>{
+      const ch=SRC[Math.floor(Math.random()*SRC.length)];
+      ctx.fillStyle='rgba(255,45,120,0.55)';ctx.fillText(ch,c.x,c.y);
+      for(let i=1;i<10;i++){ctx.fillStyle='rgba(255,45,120,'+(Math.max(0,(10-i)/10*0.12))+')';ctx.fillText(SRC[Math.floor(Math.random()*SRC.length)],c.x,c.y-i*16)}
+      c.y+=c.speed*1.5;if(c.y>H+20)c.y=-20;
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();draw();
+})();
+
+/* SCROLL REVEALS */
+(function(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis')}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal,.pub-item,.exp-item').forEach(el=>obs.observe(el));
+})();
+</script>
+</body>
+</html>
