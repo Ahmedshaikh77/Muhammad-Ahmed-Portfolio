@@ -11,15 +11,14 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
-#cur{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{position:fixed;width:30px;height:30px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur svg{width:100%;height:100%;overflow:visible;display:block;filter:drop-shadow(0 0 3px rgba(255,45,120,0.35))}
-#cur .g-base{stroke:var(--white);stroke-width:2;fill:none;stroke-linecap:round}
-#cur .g-base-dot{fill:var(--white)}
-#cur .g-jaw path{stroke:var(--fuchsia);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-#cur .g-jaw circle{fill:var(--fuchsia)}
-#cur .g-jaw{transition:transform .18s cubic-bezier(.23,1,.32,1)}
-body:has(a:hover) #cur .g-l,body:has(button:hover) #cur .g-l{transform:translateX(2px)}
-body:has(a:hover) #cur .g-r,body:has(button:hover) #cur .g-r{transform:translateX(-2px)}
+#cur .r-ring{fill:none;stroke:rgba(255,45,120,0.4);stroke-width:1.4;transition:stroke .25s}
+#cur .r-tick{stroke:rgba(255,45,120,0.5);stroke-width:1.3;stroke-linecap:round}
+#cur .r-line{stroke:var(--fuchsia);stroke-width:1.6;stroke-linecap:round}
+#cur .r-wedge{fill:rgba(255,45,120,0.18)}
+#cur .r-dot{fill:var(--white)}
+body:has(a:hover) #cur .r-ring,body:has(button:hover) #cur .r-ring{stroke:var(--fuchsia)}
 #cur-ring{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,45,120,0.45);transition:width .3s cubic-bezier(.23,1,.32,1),height .3s,opacity .3s,border-color .3s}
 body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:64px;height:64px;border-color:var(--fuchsia);opacity:1}
 
@@ -208,7 +207,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:24px 1
 </head>
 <body>
 
-<div id="cur"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path class="g-base" d="M6 8 H22 M14 8 V4"/><circle class="g-base-dot" cx="14" cy="3.6" r="1.5"/><g class="g-jaw g-l"><path d="M8 8 V19 H12"/><circle cx="8" cy="8" r="1.4"/></g><g class="g-jaw g-r"><path d="M20 8 V19 H16"/><circle cx="20" cy="8" r="1.4"/></g></svg></div>
+<div id="cur"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle class="r-ring" cx="16" cy="16" r="11"/><g class="r-tick"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/></g><g><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="2.6s" repeatCount="indefinite"/><path class="r-wedge" d="M16 16 L16 5 A11 11 0 0 1 24.4 8.9 Z"/><line class="r-line" x1="16" y1="16" x2="16" y2="5"/></g><circle class="r-dot" cx="16" cy="16" r="1.8"/></svg></div>
 <div id="cur-ring"></div>
 
 <!-- NAV -->
