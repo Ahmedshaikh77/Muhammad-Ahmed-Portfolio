@@ -11,10 +11,15 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
-#cur{position:fixed;width:18px;height:18px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
-#cur::before,#cur::after{content:'';position:absolute;background:var(--white)}
-#cur::before{width:18px;height:1px;top:50%;left:0;transform:translateY(-50%)}
-#cur::after{width:1px;height:18px;left:50%;top:0;transform:translateX(-50%)}
+#cur{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur svg{width:100%;height:100%;overflow:visible;display:block;filter:drop-shadow(0 0 3px rgba(255,45,120,0.35))}
+#cur .g-base{stroke:var(--white);stroke-width:2;fill:none;stroke-linecap:round}
+#cur .g-base-dot{fill:var(--white)}
+#cur .g-jaw path{stroke:var(--fuchsia);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#cur .g-jaw circle{fill:var(--fuchsia)}
+#cur .g-jaw{transition:transform .18s cubic-bezier(.23,1,.32,1)}
+body:has(a:hover) #cur .g-l,body:has(button:hover) #cur .g-l{transform:translateX(2px)}
+body:has(a:hover) #cur .g-r,body:has(button:hover) #cur .g-r{transform:translateX(-2px)}
 #cur-ring{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,45,120,0.45);transition:width .3s cubic-bezier(.23,1,.32,1),height .3s,opacity .3s,border-color .3s}
 body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:64px;height:64px;border-color:var(--fuchsia);opacity:1}
 
@@ -203,7 +208,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:24px 1
 </head>
 <body>
 
-<div id="cur"></div>
+<div id="cur"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path class="g-base" d="M6 8 H22 M14 8 V4"/><circle class="g-base-dot" cx="14" cy="3.6" r="1.5"/><g class="g-jaw g-l"><path d="M8 8 V19 H12"/><circle cx="8" cy="8" r="1.4"/></g><g class="g-jaw g-r"><path d="M20 8 V19 H16"/><circle cx="20" cy="8" r="1.4"/></g></svg></div>
 <div id="cur-ring"></div>
 
 <!-- NAV -->
