@@ -11,12 +11,14 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
-#cur{position:fixed;width:30px;height:30px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-#cur svg{width:100%;height:100%;overflow:visible;display:block;filter:drop-shadow(0 0 3px rgba(255,45,120,0.35))}
+#cur{position:fixed;width:32px;height:32px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur svg{width:100%;height:100%;overflow:visible;display:block;filter:drop-shadow(0 0 3px rgba(255,45,120,0.4))}
 #cur .r-ring{fill:none;stroke:rgba(255,45,120,0.4);stroke-width:1.4;transition:stroke .25s}
-#cur .r-tick{stroke:rgba(255,45,120,0.5);stroke-width:1.3;stroke-linecap:round}
+#cur .r-ring2{fill:none;stroke:rgba(255,45,120,0.18);stroke-width:1}
+#cur .r-tick{stroke:rgba(255,45,120,0.55);stroke-width:1.3;stroke-linecap:round}
 #cur .r-line{stroke:var(--fuchsia);stroke-width:1.6;stroke-linecap:round}
-#cur .r-wedge{fill:rgba(255,45,120,0.18)}
+#cur .r-seg{fill:var(--fuchsia)}
+#cur .r-blip{fill:var(--fuchsia)}
 #cur .r-dot{fill:var(--white)}
 body:has(a:hover) #cur .r-ring,body:has(button:hover) #cur .r-ring{stroke:var(--fuchsia)}
 #cur-ring{position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,45,120,0.45);transition:width .3s cubic-bezier(.23,1,.32,1),height .3s,opacity .3s,border-color .3s}
@@ -207,7 +209,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:24px 1
 </head>
 <body>
 
-<div id="cur"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle class="r-ring" cx="16" cy="16" r="11"/><g class="r-tick"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/></g><g><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="2.6s" repeatCount="indefinite"/><path class="r-wedge" d="M16 16 L16 5 A11 11 0 0 1 24.4 8.9 Z"/><line class="r-line" x1="16" y1="16" x2="16" y2="5"/></g><circle class="r-dot" cx="16" cy="16" r="1.8"/></svg></div>
+<div id="cur"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle class="r-ring" cx="16" cy="16" r="11"/><circle class="r-ring2" cx="16" cy="16" r="6.5"/><g class="r-tick"><line x1="16" y1="3" x2="16" y2="6"/><line x1="16" y1="26" x2="16" y2="29"/><line x1="3" y1="16" x2="6" y2="16"/><line x1="26" y1="16" x2="29" y2="16"/></g><circle class="r-blip" cx="21" cy="11.5" r="1.1"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.08;0.14;0.32;1" dur="2.6s" repeatCount="indefinite"/></circle><circle class="r-blip" cx="11" cy="20.5" r="1.1"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.56;0.62;0.82;1" dur="2.6s" repeatCount="indefinite"/></circle><g><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="2.6s" repeatCount="indefinite"/><path class="r-seg" fill-opacity="0.30" d="M16 16 L16 5 A11 11 0 0 0 13.71 5.24 Z"/><path class="r-seg" fill-opacity="0.24" d="M16 16 L13.71 5.24 A11 11 0 0 0 11.53 5.95 Z"/><path class="r-seg" fill-opacity="0.18" d="M16 16 L11.53 5.95 A11 11 0 0 0 9.53 7.10 Z"/><path class="r-seg" fill-opacity="0.12" d="M16 16 L9.53 7.10 A11 11 0 0 0 7.82 8.64 Z"/><path class="r-seg" fill-opacity="0.07" d="M16 16 L7.82 8.64 A11 11 0 0 0 6.47 10.5 Z"/><path class="r-seg" fill-opacity="0.03" d="M16 16 L6.47 10.5 A11 11 0 0 0 5.54 12.6 Z"/><line class="r-line" x1="16" y1="16" x2="16" y2="5"/><circle cx="16" cy="5" r="1.4" fill="var(--fuchsia)"/></g><circle class="r-dot" cx="16" cy="16" r="1.7"/></svg></div>
 <div id="cur-ring"></div>
 
 <!-- NAV -->
