@@ -157,6 +157,7 @@ main > section:not(.hero) {
 .brand {
   display: inline-flex;
   align-items: center;
+  min-width: 44px;
   min-height: 44px;
   color: var(--text);
   font-family: var(--mono);
@@ -413,6 +414,11 @@ main > section:not(.hero) {
   min-width: 0;
   padding: 10px;
   background: #0d0d12;
+}
+
+.project-card--featured .project-card__media {
+  display: grid;
+  grid-template-rows: minmax(220px, 1fr) auto;
 }
 
 .project-card__cover {

@@ -4,6 +4,12 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const html = read('index.html');
+const css = read('assets/css/styles.css');
+
+const cssRule = (selector) => {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return css.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`))?.[1] ?? '';
+};
 
 const requiredFiles = [
   'assets/css/styles.css',
@@ -114,12 +120,23 @@ test('external new-tab links are protected and visibly identified', () => {
 });
 
 test('styles support focus, mobile touch targets, and reduced motion', () => {
-  const css = read('assets/css/styles.css');
   assert.match(css, /:focus-visible/);
   assert.match(css, /min-(?:height|block-size):\s*44px/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.doesNotMatch(css, /cursor:\s*none/);
   assert.doesNotMatch(css, /@import\s+url/);
+});
+
+test('mobile brand exposes a 44 by 44 pixel minimum target', () => {
+  const brandRule = cssRule('.brand');
+  assert.match(brandRule, /min-width:\s*44px/);
+  assert.match(brandRule, /min-height:\s*44px/);
+});
+
+test('featured project media reserves separate cover and gallery rows', () => {
+  const featuredMediaRule = cssRule('.project-card--featured .project-card__media');
+  assert.match(featuredMediaRule, /display:\s*grid/);
+  assert.match(featuredMediaRule, /grid-template-rows:\s*minmax\(220px,\s*1fr\)\s+auto/);
 });
 
 test('mobile navigation script maintains accessible state', () => {

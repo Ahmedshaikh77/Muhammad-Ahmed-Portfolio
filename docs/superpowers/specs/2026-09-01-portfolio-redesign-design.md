@@ -1,6 +1,6 @@
 # Muhammad Ahmed Portfolio Redesign
 
-**Date:** 2026-09-01  
+**Date:** 2026-09-01<br>
 **Status:** Approved for implementation
 **Direction:** Evidence-first technical
 
@@ -110,9 +110,9 @@ Every case study contains:
 
 #### Case study A: Kinova Gen3 Lite manipulation suite
 
-**Lead status:** Physical demonstration, with related simulation and implementation prototypes  
-**Lead cover source:** `KinovaGen3-Beer-Pong/docs/Ball in Mid-Air During the Throw.jpeg`  
-**Target asset:** `assets/images/projects/kinova-ball-mid-air.jpeg`  
+**Lead status:** Physical demonstration, with related simulation and implementation prototypes<br>
+**Lead cover source:** `KinovaGen3-Beer-Pong/docs/Ball in Mid-Air During the Throw.jpeg`<br>
+**Target asset:** `assets/images/projects/kinova-ball-mid-air.jpeg`<br>
 **Alt text:** `Kinova Gen3 Lite arm after releasing a ping-pong ball toward a cup target.`
 
 The suite leads with the ball-throwing demonstration and links three related projects. Muhammad's contribution is stated as the original `beer_pong` ROS 2 package containing the single-throw and six-cup nodes, gripper-control node, MoveIt 2 commands, collision-scene objects, and checked-in joint-limit configuration.
@@ -131,9 +131,9 @@ The supporting gallery uses these additional images copied from the project repo
 
 #### Case study B: NeuroBot
 
-**Status:** Implementation present, validation pending  
-**Cover source:** `Neuro-Adaptive-Robotic-Companion/assets/NeuroBot.png`  
-**Target asset:** `assets/images/projects/neurobot.png`  
+**Status:** Implementation present, validation pending<br>
+**Cover source:** `Neuro-Adaptive-Robotic-Companion/assets/NeuroBot.png`<br>
+**Target asset:** `assets/images/projects/neurobot.png`<br>
 **Alt text:** `Repository illustration of the NeuroBot companion prototype.`
 
 The case study describes local face processing, voice interaction with documented cloud-service boundaries, and an adaptive gate for audio, gesture, and face modalities. Muhammad's contribution is the face-processing and voice-session pipeline, modality adapters, `AdaptiveGate`, late fusion, fault-injection helpers, and Jetson-oriented latency and power harness. It states that a Jetson-oriented compute-cost artifact records latency and board-power values across four power modes. It must not claim model accuracy, clinical inference, a validated multimodal improvement, ROS 2 actuation, or physiological sensor integration that the current repository does not establish.
@@ -142,9 +142,9 @@ The source image is only suitable for a small contained treatment. It appears at
 
 #### Case study C: CRUTCH
 
-**Status:** Embedded-mechatronics bench concept, not human-use validated  
-**Cover source:** The prototype photograph linked in the CRUTCH repository README: `https://github.com/user-attachments/assets/b7e089eb-321b-4cbf-8a11-7d43467a3301`  
-**Target asset:** `assets/images/projects/crutch-prototype.jpeg`  
+**Status:** Embedded-mechatronics bench concept, not human-use validated<br>
+**Cover source:** The prototype photograph linked in the CRUTCH repository README: `https://github.com/user-attachments/assets/b7e089eb-321b-4cbf-8a11-7d43467a3301`<br>
+**Target asset:** `assets/images/projects/crutch-prototype.jpeg`<br>
 **Alt text:** `Photograph of the CRUTCH prototype assembly used for exploratory bench work.`
 
 This is repository-sourced media rather than a file currently stored in the repository. Muhammad has explicitly approved using repository media as portfolio covers. The implementation copies the attachment locally, records its source in the portfolio README, and does not imply that the photograph alone verifies performance or ownership of every pictured component.
@@ -155,9 +155,9 @@ Muhammad's contribution is stated separately from team-level project scope.
 
 #### Case study D: ArmBot
 
-**Status:** Robot-description concept  
-**Cover source:** `6DOF-Robot/docs/Screenshot_2025-10-16_at_11.55.14_PM.png`  
-**Target asset:** `assets/images/projects/armbot-cad.png`  
+**Status:** Robot-description concept<br>
+**Cover source:** `6DOF-Robot/docs/Screenshot_2025-10-16_at_11.55.14_PM.png`<br>
+**Target asset:** `assets/images/projects/armbot-cad.png`<br>
 **Alt text:** `CAD perspective view of the six-joint ArmBot concept.`
 
 The case study describes the six-joint Xacro and URDF model, seven STL meshes, launch definitions, and CAD and historical RViz evidence. The repository attributes authorship to Muhammad Ahmed. The case study clearly notes the current clean-launch blocker and absence of a demonstrated control system.
