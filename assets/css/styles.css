@@ -956,9 +956,17 @@ main > section:not(.hero) {
 
   .hero__actions,
   .contact__actions { align-items: stretch; }
+  .capability h3 a,
+  .research a {
+    display: inline-flex;
+    align-items: center;
+  }
   .button,
   .text-link,
-  .site-nav a { min-height: 44px; }
+  .site-nav a,
+  .project-card__links a,
+  .capability h3 a,
+  .research a { min-height: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
