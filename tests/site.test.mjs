@@ -29,6 +29,14 @@ test('all production files exist and are non-empty', () => {
   }
 });
 
+test('portfolio preview is encoded as PNG', () => {
+  const preview = readFileSync(new URL('../assets/images/portfolio-preview.png', import.meta.url));
+  assert.deepEqual(
+    [...preview.subarray(0, 8)],
+    [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
+  );
+});
+
 test('page metadata matches the approved public identity', () => {
   assert.match(html, /<title>Muhammad Ahmed \| Robotics and Embedded Systems Engineer<\/title>/);
   assert.match(html, /name="description" content="Robotics and embedded systems portfolio featuring ROS 2 manipulation, embedded sensing, edge perception, and hardware-software integration projects by Muhammad Ahmed\."/);
