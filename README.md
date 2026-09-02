@@ -67,7 +67,7 @@ The site uses semantic landmarks and heading order, a skip link, visible keyboar
 
 - `kinova-ball-mid-air.jpeg` and `kinova-wind-up.jpeg`: copied from `Ahmedshaikh77/KinovaGen3-Beer-Pong` under `docs/`.
 - `kinova-stack-gazebo.png` and `kinova-stack-rviz.png`: copied from `Ahmedshaikh77/kinovaGen3-Pick-and-Place` under `docs/`.
-- `neurobot.png`: user-provided photograph of the physical NeuroBot prototype.
+- `neurobot.jpg`: web-optimized version of the user-provided physical NeuroBot prototype photograph.
 - `crutch-prototype.jpeg`: downloaded from the prototype image linked in the `Ahmedshaikh77/Comfortable-Responsive-Universal-Technology-for-Crutch-Health-CRUTCH` README at `https://github.com/user-attachments/assets/b7e089eb-321b-4cbf-8a11-7d43467a3301`.
 - `armbot-cad.png`: copied from `Ahmedshaikh77/6DOF-Robot` under `docs/`.
 - `social-preview.png`: portfolio identity graphic created for this site.
