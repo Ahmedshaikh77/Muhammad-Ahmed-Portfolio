@@ -1,0 +1,1305 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+/Title (Muhammad Ahmed)
+/Author (Muhammad Ahmed)
+/Subject (Robotics\054 embedded systems\054 and hardware integration resume)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+/Lang (en\055US)
+>>
+endobj
+4 0 obj
+<<
+/Annots [ 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ]
+/Contents 12 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 13 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (mailto\072ms1242\100duke\056edu)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 272.055 733.92 343.9068 745.08 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057www\056linkedin\056com\057in\057muhammad\055ahmed\055nazir\055shaikh\055104103247\057)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 351.8118 733.92 385.9056 745.08 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+7 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057Ahmedshaikh77)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 393.8106 733.92 421.7106 745.08 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057ahmedshaikh77\056github\056io\057Muhammad\055Ahmed\055Portfolio\057)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 429.6156 733.92 462.6864 745.08 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057Ahmedshaikh77\057KinovaGen3\055Beer\055Pong)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 294.0019 411.76 327.9289 422.08 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057Ahmedshaikh77\057Neuro\055Adaptive\055Robotic\055Companion)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 246.8017 351.56 280.7287 361.88 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057Ahmedshaikh77\057Comfortable\055Responsive\055Universal\055Technology\055for\055Crutch\055Health\055CRUTCH)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 365.8692 276.36 399.7962 286.68 ]
+/Subtype /Link
+/Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/Length 13427
+>>
+stream
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+q
+1 0 0 1 43.44 748.08 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 -4.5 Tm
+/F2 16.5 Tf
+12 TL
+191.28825 0 Td
+(Muhammad Ahmed) Tj
+T*
+-142.6957 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 733.08 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+105.8736 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+<44757268616d2c204e43207f2028393139292d3233362d31363338207f20> Tj
+0.101961 0.05098 0.670588 rg
+(ms1242\100duke\056edu) Tj
+0 0 0 rg
+<207f20> Tj
+0.101961 0.05098 0.670588 rg
+(LinkedIn) Tj
+0 0 0 rg
+<207f20> Tj
+0.101961 0.05098 0.670588 rg
+(GitHub) Tj
+0 0 0 rg
+<207f20> Tj
+0.101961 0.05098 0.670588 rg
+(Portfolio) Tj
+T*
+-105.8736 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 715.08 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F2 10.4 Tf
+12 TL
+(Summary) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 713.28 cm
+q
+0.8 w
+1 J
+0 0 0 RG
+n
+0 0 m
+525.12 0 l
+S
+Q
+Q
+q
+1 0 0 1 43.44 633.08 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 69.1 Tm
+/F3 9.3 Tf
+11.2 TL
+(Robotics systems\055integration engineer \050MS\054 Duke\054 May 2026\051 with a track record of standing up robot setups and keeping them running\072) Tj
+T*
+(brought a manipulator from unboxing to reliable operation \050ROS 2\054 regression checks holding failure under 2\045\051\054 built a multimodal robot on) Tj
+T*
+(Jetson whose camera\055audio\055ML pipeline sustains \17687\045 at 30 Hz\054 and wrote real\055time control and I2C sensor drivers from scratch on a) Tj
+T*
+(microcontroller \050C\053\053\054 50 Hz\051\056 Hands\055on with ROS 2\054 Python\054 and Linux daily at the systems level\073 debugs across the stack\054 oscilloscopes) Tj
+T*
+(and logic analyzers at the hardware end\054 logs and telemetry through drivers and applications\054 timing and frame\055drop bugs in ML pipelines\073) Tj
+T*
+(kernel\055level driver work\072 ready to learn\054 stated plainly\056 Builds data pipelines and makes evaluation repeatable\072 benchmark\055style pass\057fail) Tj
+T*
+(criteria\054 regression suites\054 CI\054 and monitoring\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 617.58 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F2 10.4 Tf
+12 TL
+(Professional Experience) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 615.78 cm
+q
+0.8 w
+1 J
+0 0 0 RG
+n
+0 0 m
+525.12 0 l
+S
+Q
+Q
+q
+1 0 0 1 39.6 600.98 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 2.1 Tm
+/F2 9.7 Tf
+11.8 TL
+(24 and Up\054 Robotics Systems Engineer) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+62.1489 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(May 2026 \226 Present) Tj
+T*
+-62.1489 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 590.38 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F4 9 Tf
+10.6 TL
+(Raleigh\054 NC \050Hybrid\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 578.08 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Integrate robotic systems across sensors\054 drivers\054 compute\054 and software\054 standing them up and keeping them running\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 565.78 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Build data pipelines and tooling \050Python\054 CI\057CD\051 with monitoring and alerting\054 evaluation made repeatable and reliable\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 553.48 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Debug across the stack\054 from hardware signals to application and pipeline bugs\054 to verified closure\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 39.6 539.48 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(Duke University\054 Junior R) Tj
+(\046) Tj
+(D Engineer \050Garage Lab\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+55.6854 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(Jun 2025 \226 May 2026) Tj
+T*
+-55.6854 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 528.88 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F4 9 Tf
+10.6 TL
+(Pratt School of Engineering\054 Durham\054 NC) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 516.58 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Worked hands\055on with electromechanical systems daily\072 build\054 instrument\054 test\054 and troubleshoot\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 504.28 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Built instrumented test setups\054 brought up electronics \050soldering\054 schematics\054 oscilloscopes\051\054 and validated against requirements\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 39.6 490.28 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 2.1 Tm
+/F2 9.7 Tf
+11.8 TL
+(S\056R\056M\056 Institute of Science and Technology\054 Research Assistant \050Tribology\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+57.2385 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(Apr 2022 \226 Sep 2023) Tj
+T*
+-57.2385 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 479.68 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F4 9 Tf
+10.6 TL
+(Chennai\054 India) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 467.38 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Ran controlled characterization campaigns \050pin\055on\055disk wear\054 EIS\054 FTIR\051 with design of experiments and statistical analysis\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 455.08 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Quantified a 30\045 corrosion\055resistance improvement and 25\045 wear reduction against defined limits\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 442.78 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Co\055authored 2\053 peer\055reviewed publications documenting methods and results\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 427.28 cm
+q
+BT
+1 0 0 1 0 1.6 Tm
+12 TL
+/F2 10.4 Tf
+0 0 0 rg
+(Robot Bring\055Up\054 Pipelines \046 Evaluation Projects) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 425.48 cm
+q
+0.8 w
+1 J
+0 0 0 RG
+n
+0 0 m
+525.12 0 l
+S
+Q
+Q
+q
+1 0 0 1 39.6 410.68 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(Kinova Gen3 Lite Manipulator\054 Stood Up and Kept Running ) Tj
+/F2 8.6 Tf
+0.101961 0.05098 0.670588 rg
+(\050GitHub\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+54.6624 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(Aug 2025 \226 Dec 2025) Tj
+T*
+-54.6624 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 388.08 cm
+q
+BT
+1 0 0 1 4 13.3 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 13.3 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Brought a vendor manipulator from unboxing to reliable operation\072 drivers\054 ROS 2 stack\054 planning \050MoveIt 2\051\054 and task behavior on real) Tj
+T*
+-1.5 0 Td
+(hardware \050Python\057C\053\053\054 Linux\051\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 364.48 cm
+q
+BT
+1 0 0 1 4 13.3 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 13.3 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Built the evaluation myself\054 instrumented commanded\055versus\055actual logging with pass\057fail criteria\054 and root\055caused a 40\045 failure rate to) Tj
+T*
+-1.5 0 Td
+(a sim\055to\055real divergence\054 driven under 2\045 at \1764 mm\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 39.6 350.48 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(NeuroBot\054 Sensor Stack to ML Pipeline on Jetson ) Tj
+/F2 8.6 Tf
+0.101961 0.05098 0.670588 rg
+(\050GitHub\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+56.2062 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(Jan 2025 \226 May 2026) Tj
+T*
+-56.2062 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 339.18 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+-0.042736 Tw
+(Stood up a robot sensor stack \050camera\054 audio\051 feeding an ML and LLM pipeline on embedded Linux\054 sustaining \17687\045 accuracy at 30 Hz\056) Tj
+T*
+0 Tw
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 326.88 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Debugged ML pipeline bugs from logs\072 cross\055module timing\054 dropped frames\054 and integration faults\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 39.6 312.88 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(Robot\055to\055Data Pipeline \046 Automation \050Python\054 CI\057CD\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+90.3 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(2025 \226 2026) Tj
+T*
+-90.3 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 301.58 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Built and operate a data pipeline running unattended\072 scheduled collection across 50\053 sources\054 filtering\054 structured storage\054 and reporting\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 43.44 289.28 cm
+q
+BT
+1 0 0 1 4 2 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 2 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Made it reliable\072 health monitoring\054 fault detection\054 and alerting built in\054 improved from its own run data\056) Tj
+T*
+-1.5 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 39.6 275.28 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(CRUTCH\054 Real\055Time Control and Sensor Drivers from Scratch \050ESP32\054 C\053\053\051 ) Tj
+/F2 8.6 Tf
+0.101961 0.05098 0.670588 rg
+(\050GitHub\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+BT
+1 0 0 1 0 2.7 Tm
+54.6624 0 Td
+12 TL
+/F3 9.3 Tf
+0 0 0 rg
+(Aug 2024 \226 Dec 2024) Tj
+T*
+-54.6624 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 252.68 cm
+q
+BT
+1 0 0 1 4 13.3 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 13.3 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Wrote the real\055time control loop \05050 Hz\051 and I2C sensor drivers myself\054 with telemetry over WiFi\057TCP\054 validated across a 50\055cycle) Tj
+T*
+-1.5 0 Td
+(protocol \050600 N to 140 N\051\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 229.08 cm
+q
+BT
+1 0 0 1 4 13.3 Tm
+/F1 10 Tf
+12 TL
+0 0 0 rg
+<7f> Tj
+ET
+0 0 0 rg
+BT
+1 0 0 1 12 13.3 Tm
+/F3 9.3 Tf
+11.3 TL
+1.5 0 Td
+(Root\055caused a cross\055stack failure\054 vibration saturating a sensor and corrupting control\054 with oscilloscope and logic analyzer\054 fixed and) Tj
+T*
+-1.5 0 Td
+(re\055verified\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 213.58 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F2 10.4 Tf
+12 TL
+(Education) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 211.78 cm
+q
+0.8 w
+1 J
+0 0 0 RG
+n
+0 0 m
+525.12 0 l
+S
+Q
+Q
+q
+1 0 0 1 39.6 196.98 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+BT
+1 0 0 1 0 2.1 Tm
+11.8 TL
+/F2 9.7 Tf
+0 0 0 rg
+(Duke University\054 M\056S\056\054 Mechanical Engineering \046 Materials Science) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 2.7 Tm
+/F3 9.3 Tf
+12 TL
+55.6854 0 Td
+(Completed May 2026) Tj
+T*
+-55.6854 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 186.38 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F4 9 Tf
+10.6 TL
+(GPA 3\05674\0574\0560\054 Duke Competitive Research Grant) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 39.6 172.38 cm
+q
+0 0 0 rg
+BT
+/F1 10 Tf
+12 TL
+ET
+q
+1 0 0 1 0 0.7 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 2.1 Tm
+/F2 9.7 Tf
+11.8 TL
+(S\056R\056M\056 Institute of Science and Technology\054 B\056Tech\054 Mechanical Engineering) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 396 0.5 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 2.7 Tm
+/F3 9.3 Tf
+12 TL
+98.8281 0 Td
+(May 2023) Tj
+T*
+-98.8281 0 Td
+ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 43.44 161.78 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F4 9 Tf
+10.6 TL
+(CGPA 8\05618\05710\054 Chennai\054 India) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 146.28 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 1.6 Tm
+/F2 10.4 Tf
+12 TL
+(Technical Skills) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 144.48 cm
+q
+0.8 w
+1 J
+0 0 0 RG
+n
+0 0 m
+525.12 0 l
+S
+Q
+Q
+q
+1 0 0 1 43.44 120.28 cm
+q
+BT
+1 0 0 1 0 13.1 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(Systems Integration\072) Tj
+/F3 9.3 Tf
+( Robots\054 drivers\054 sensors\054 and real\055time control integrated on real hardware\073 MCU\055level sensor drivers written from) Tj
+T*
+(scratch\073 kernel\055level driver work\072 ready to learn) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 107.68 cm
+q
+BT
+1 0 0 1 0 1.9 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(ROS 2\054 Python \046 Linux\072) Tj
+/F3 9.3 Tf
+( ROS 2 and MoveIt 2 on hardware\054 Python \050primary\051\054 C\053\053\054 bash\054 Linux daily at the systems level\054 Git) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 83.88 cm
+q
+BT
+1 0 0 1 0 13.1 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(Debug Across the Stack\072) Tj
+/F3 9.3 Tf
+( Oscilloscopes and logic analyzers at the hardware end\054 telemetry and log analysis through drivers and) Tj
+T*
+(applications\054 ML pipeline timing and frame\055drop bugs) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 60.08 cm
+q
+BT
+1 0 0 1 0 13.1 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(Pipelines \046 Evaluation\072) Tj
+/F3 9.3 Tf
+( Data pipelines with structured storage and reporting\054 benchmark\055style pass\057fail criteria\054 regression suites\054 CI\057CD\054) Tj
+T*
+(monitoring and alerting\054 repeatable evaluation) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 47.48 cm
+q
+BT
+1 0 0 1 0 1.9 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(Platforms\072) Tj
+/F3 9.3 Tf
+( Kinova manipulator \050same class as Franka\051\054 Jetson embedded Linux\054 ESP32 real\055time firmware\054 cameras\054 IMUs\054 load cells) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 43.44 34.88 cm
+q
+BT
+1 0 0 1 0 1.9 Tm
+11.2 TL
+/F2 9.3 Tf
+0 0 0 rg
+(Research\055Lab Mindset\072) Tj
+/F3 9.3 Tf
+( Robot as a means to an end\072 instrumented experiments\054 2\053 peer\055reviewed publications\054 clear documentation) Tj
+T*
+ET
+Q
+Q
+
+endstream
+endobj
+13 0 obj
+<<
+/F1 14 0 R
+/F2 15 0 R
+/F3 16 0 R
+/F4 17 0 R
+>>
+endobj
+14 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+15 0 obj
+<<
+/BaseFont /Times-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+16 0 obj
+<<
+/BaseFont /Times-Roman
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+17 0 obj
+<<
+/BaseFont /Times-Italic
+/Encoding /WinAnsiEncoding
+/Name /F4
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000180 00000 n 
+0000000239 00000 n 
+0000000305 00000 n 
+0000000552 00000 n 
+0000000730 00000 n 
+0000000980 00000 n 
+0000001175 00000 n 
+0000001407 00000 n 
+0000001632 00000 n 
+0000001873 00000 n 
+0000002162 00000 n 
+0000015643 00000 n 
+0000015709 00000 n 
+0000015817 00000 n 
+0000015926 00000 n 
+0000016036 00000 n 
+trailer
+<<
+/Size 18
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+16147
+%%EOF

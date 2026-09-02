@@ -24,6 +24,7 @@ const requiredFiles = [
   'assets/images/projects/neurobot.png',
   'assets/images/projects/crutch-prototype.jpeg',
   'assets/images/projects/armbot-cad.png',
+  'assets/resume/Muhammad-Ahmed.pdf',
   'sitemap.xml',
   'README.md',
 ];
@@ -43,6 +44,22 @@ test('portfolio preview is encoded as PNG', () => {
   );
 });
 
+test('public resume action opens a valid PDF in a new tab', () => {
+  const resume = readFileSync(new URL('../assets/resume/Muhammad-Ahmed.pdf', import.meta.url));
+  assert.equal(resume.subarray(0, 5).toString('ascii'), '%PDF-');
+  assert.match(
+    html,
+    /<a class="button button--secondary" href="assets\/resume\/Muhammad-Ahmed\.pdf" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed resume \(opens in a new tab\)">View résumé <span aria-hidden="true">&#8599;<\/span><\/a>/,
+  );
+});
+
+test('public resume uses the approved Muhammad Ahmed identity', () => {
+  const resume = readFileSync(new URL('../assets/resume/Muhammad-Ahmed.pdf', import.meta.url), 'latin1');
+  assert.match(resume, /\/Title \(Muhammad Ahmed\)/);
+  assert.match(resume, /\(Muhammad Ahmed\) Tj/);
+  assert.doesNotMatch(resume, /Nazir Shaikh/);
+});
+
 test('page metadata matches the approved public identity', () => {
   assert.match(html, /<title>Muhammad Ahmed \| Robotics and Embedded Systems Engineer<\/title>/);
   assert.match(html, /name="description" content="Robotics and embedded systems portfolio featuring ROS 2 manipulation, embedded sensing, edge perception, and hardware-software integration projects by Muhammad Ahmed\."/);
@@ -58,10 +75,23 @@ test('semantic structure and approved hero copy are present', () => {
   assert.match(html, /<a class="skip-link" href="#main-content">Skip to main content<\/a>/);
   assert.match(html, /<main id="main-content">/);
   assert.match(html, /Robots should work outside the demo\./);
-  assert.match(html, /Robotics and Embedded Systems Engineer/);
+  assert.match(html, /<p class="hero__name">Muhammad Ahmed<\/p>/);
+  assert.match(html, /Robotics, Embedded Systems, and Hardware Integration Engineer/);
   assert.match(html, /Open to robotics and embedded systems opportunities\./);
   assert.match(html, /aria-controls="primary-navigation"/);
   assert.match(html, /aria-expanded="false"/);
+});
+
+test('every project presents the same three recruiter-scannable facts', () => {
+  const factLists = [...html.matchAll(/<dl class="project-card__facts">([\s\S]*?)<\/dl>/g)];
+  assert.equal(factLists.length, 4);
+
+  for (const [, facts] of factLists) {
+    assert.deepEqual(
+      [...facts.matchAll(/<dt>([^<]+)<\/dt>/g)].map((match) => match[1]),
+      ['Outcome', 'My role', 'Proof'],
+    );
+  }
 });
 
 test('featured projects and factual boundaries are explicit', () => {

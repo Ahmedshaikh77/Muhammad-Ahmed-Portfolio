@@ -13,6 +13,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 ## Selected features
 
 - Evidence-first case studies with repository-sourced media
+- Recruiter-ready résumé access above the fold
 - Accurate project status and validation boundaries
 - Responsive layouts for mobile, tablet, and desktop
 - Keyboard-operable navigation and reduced-motion support
@@ -29,6 +30,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 |   |-- css/styles.css
 |   |-- js/main.js
 |   |-- icons/favicon.svg
+|   |-- resume/Muhammad-Ahmed.pdf
 |   `-- images/
 |       |-- portfolio-preview.png
 |       |-- social-preview.png
@@ -69,6 +71,7 @@ The site uses semantic landmarks and heading order, a skip link, visible keyboar
 - `armbot-cad.png`: copied from `Ahmedshaikh77/6DOF-Robot` under `docs/`.
 - `social-preview.png`: portfolio identity graphic created for this site.
 - `portfolio-preview.png`: screenshot of the finished local portfolio.
+- `Muhammad-Ahmed.pdf`: public résumé presented under Muhammad Ahmed's name.
 
 Repository media is used to show the documented project context. An image alone is not presented as proof of performance, ownership of every pictured component, clinical validation, or production readiness.
 
