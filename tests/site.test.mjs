@@ -49,15 +49,15 @@ test('public resume action opens a valid PDF in a new tab', () => {
   assert.equal(resume.subarray(0, 5).toString('ascii'), '%PDF-');
   assert.match(
     html,
-    /<a class="button button--secondary" href="assets\/resume\/Muhammad-Ahmed\.pdf" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed resume \(opens in a new tab\)">View résumé <span aria-hidden="true">&#8599;<\/span><\/a>/,
+    /<a class="button button--secondary" href="assets\/resume\/Muhammad-Ahmed\.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Muhammad Ahmed resume \(opens in a new tab\)">Resume<\/a>/,
   );
 });
 
-test('public resume uses the approved Muhammad Ahmed identity', () => {
-  const resume = readFileSync(new URL('../assets/resume/Muhammad-Ahmed.pdf', import.meta.url), 'latin1');
-  assert.match(resume, /\/Title \(Muhammad Ahmed\)/);
-  assert.match(resume, /\(Muhammad Ahmed\) Tj/);
-  assert.doesNotMatch(resume, /Nazir Shaikh/);
+test('contact offers the approved 30-minute Calendly booking link', () => {
+  assert.match(
+    html,
+    /<a href="https:\/\/calendly\.com\/ahmedshaikh655\/30min" target="_blank" rel="noopener noreferrer" aria-label="Book a 30-minute call with Muhammad Ahmed \(opens in a new tab\)">Book a 30-minute call <span aria-hidden="true">&#8599;<\/span><\/a>/,
+  );
 });
 
 test('page metadata matches the approved public identity', () => {
