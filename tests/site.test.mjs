@@ -128,7 +128,7 @@ test('project media has the approved source paths, alt text, and dimensions', ()
     ['kinova-wind-up.jpeg', 'Kinova Gen3 Lite arm in its wind-up pose before throwing a ping-pong ball.'],
     ['kinova-stack-gazebo.png', 'Gazebo view of the Kinova Gen3 Lite pick-and-place stacking scene.'],
     ['kinova-stack-rviz.png', 'RViz view of the Kinova Gen3 Lite pick-and-place stack and planning scene.'],
-    ['neurobot.png', 'Repository illustration of the NeuroBot companion prototype.'],
+    ['neurobot.png', 'White 3D-printed NeuroBot prototype with a front-facing camera on a sunlit table.'],
     ['crutch-prototype.jpeg', 'Photograph of the CRUTCH prototype assembly used for exploratory bench work.'],
     ['armbot-cad.png', 'CAD perspective view of the six-joint ArmBot concept.'],
   ];
@@ -167,6 +167,25 @@ test('featured project media reserves separate cover and gallery rows', () => {
   const featuredMediaRule = cssRule('.project-card--featured .project-card__media');
   assert.match(featuredMediaRule, /display:\s*grid/);
   assert.match(featuredMediaRule, /grid-template-rows:\s*minmax\(220px,\s*1fr\)\s+auto/);
+});
+
+test('NeuroBot presents the supplied prototype photograph as its cover', () => {
+  const photo = readFileSync(new URL('../assets/images/projects/neurobot.png', import.meta.url));
+  assert.deepEqual(
+    [...photo.subarray(0, 8)],
+    [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
+  );
+  assert.equal(photo.readUInt32BE(16), 800);
+  assert.equal(photo.readUInt32BE(20), 1066);
+  assert.match(
+    html,
+    /<img src="assets\/images\/projects\/neurobot\.png" alt="White 3D-printed NeuroBot prototype with a front-facing camera on a sunlit table\." width="800" height="1066" loading="lazy">/,
+  );
+
+  const neuroBotImageRule = cssRule('#project-neurobot .project-card__cover img');
+  assert.match(neuroBotImageRule, /width:\s*100%/);
+  assert.match(neuroBotImageRule, /height:\s*100%/);
+  assert.match(neuroBotImageRule, /object-fit:\s*cover/);
 });
 
 test('mobile navigation script maintains accessible state', () => {
