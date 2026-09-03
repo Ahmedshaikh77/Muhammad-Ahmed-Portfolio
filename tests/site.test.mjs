@@ -21,7 +21,7 @@ const requiredFiles = [
   'assets/images/projects/kinova-wind-up.jpeg',
   'assets/images/projects/kinova-stack-gazebo.png',
   'assets/images/projects/kinova-stack-rviz.png',
-  'assets/images/projects/neurobot.png',
+  'assets/images/projects/neurobot.jpg',
   'assets/images/projects/crutch-prototype.jpeg',
   'assets/images/projects/armbot-cad.png',
   'assets/resume/Muhammad-Ahmed.pdf',
@@ -128,7 +128,7 @@ test('project media has the approved source paths, alt text, and dimensions', ()
     ['kinova-wind-up.jpeg', 'Kinova Gen3 Lite arm in its wind-up pose before throwing a ping-pong ball.'],
     ['kinova-stack-gazebo.png', 'Gazebo view of the Kinova Gen3 Lite pick-and-place stacking scene.'],
     ['kinova-stack-rviz.png', 'RViz view of the Kinova Gen3 Lite pick-and-place stack and planning scene.'],
-    ['neurobot.png', 'Repository illustration of the NeuroBot companion prototype.'],
+    ['neurobot.jpg', 'White 3D-printed NeuroBot prototype with a front-facing camera on a sunlit table.'],
     ['crutch-prototype.jpeg', 'Photograph of the CRUTCH prototype assembly used for exploratory bench work.'],
     ['armbot-cad.png', 'CAD perspective view of the six-joint ArmBot concept.'],
   ];
@@ -167,6 +167,26 @@ test('featured project media reserves separate cover and gallery rows', () => {
   const featuredMediaRule = cssRule('.project-card--featured .project-card__media');
   assert.match(featuredMediaRule, /display:\s*grid/);
   assert.match(featuredMediaRule, /grid-template-rows:\s*minmax\(220px,\s*1fr\)\s+auto/);
+});
+
+test('NeuroBot presents the supplied prototype photograph as its cover', () => {
+  const photo = readFileSync(new URL('../assets/images/projects/neurobot.jpg', import.meta.url));
+  assert.deepEqual(
+    [...photo.subarray(0, 3)],
+    [0xff, 0xd8, 0xff],
+  );
+  assert.match(
+    html,
+    /<img src="assets\/images\/projects\/neurobot\.jpg" alt="White 3D-printed NeuroBot prototype with a front-facing camera on a sunlit table\." width="800" height="1066" loading="lazy">/,
+  );
+
+  const neuroBotCoverRule = cssRule('#project-neurobot .project-card__cover');
+  assert.match(neuroBotCoverRule, /height:\s*clamp\(320px,\s*38vw,\s*440px\)/);
+
+  const neuroBotImageRule = cssRule('#project-neurobot .project-card__cover img');
+  assert.match(neuroBotImageRule, /width:\s*100%/);
+  assert.match(neuroBotImageRule, /height:\s*100%/);
+  assert.match(neuroBotImageRule, /object-fit:\s*contain/);
 });
 
 test('mobile navigation script maintains accessible state', () => {
