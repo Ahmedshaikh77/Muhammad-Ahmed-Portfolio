@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>No-JavaScript navigation check</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=20260903-4">
+</head>
+<body>
+  <!-- Deliberately no script or .js class: exercises the real fallback styles. -->
+  <header class="site-header">
+    <a class="brand" href="#about">MA.</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#about">About</a><a href="#education">Education</a>
+      <a href="#research">Research</a><a href="#work">Projects</a>
+      <a href="#experience">Experience</a><a href="#capabilities">Skills</a>
+      <a href="#recognition">Recognition</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="about"><h2>About</h2><p>Fallback content remains accessible.</p></section>
+    <section id="education"><h2>Education</h2></section>
+    <section id="research"><h2>Research</h2></section>
+    <section id="work"><h2>Projects</h2></section>
+    <section id="experience"><h2>Experience</h2></section>
+    <section id="capabilities"><h2>Skills</h2></section>
+    <section id="recognition"><h2>Recognition</h2></section>
+    <section id="contact"><h2>Contact</h2></section>
+  </main>
+</body>
+</html>
