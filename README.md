@@ -14,7 +14,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 
 - Evidence-first case studies with repository-sourced media
 - Recruiter-ready Resume access above the fold
-- “Let’s connect” booking action through Calendly and direct Duke email contact
+- “Schedule a meeting” booking action through Calendly and an “Email” link to the Duke email address
 - About, education, and published research before the project case studies
 - Grouped technical skills and source-linked recognition
 - Optional desktop radar pointer effect and subtle ROS-topic background animation
