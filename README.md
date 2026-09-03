@@ -71,13 +71,13 @@ The site is published from the repository's `main` branch through GitHub Pages. 
 
 The site uses semantic landmarks and heading order, a skip link, visible keyboard focus, 44-pixel mobile targets, reduced-motion styles, explicit image dimensions, local system fonts, and progressive enhancement. Core content stays visible if JavaScript is unavailable.
 
-The radar is a decorative follower and never replaces the native pointer or blocks interaction. The animated canvas is limited to the introduction and pauses when it is offscreen or the tab is hidden. Effects are disabled on small/touch layouts and when reduced motion is requested. The introduction also offers a manual pause control.
+On supported desktop layouts, the radar replaces the native pointer while it is active and never blocks interaction. The native pointer returns whenever the effect is paused, hidden, or unavailable. The animated canvas is limited to the introduction and pauses when it is offscreen or the tab is hidden. Effects are disabled on small/touch layouts and when reduced motion is requested. The introduction also offers a manual pause control.
 
 ## Content sources
 
 Skills draw from the supplied public resume, the previous portfolio, and the owner's LinkedIn project descriptions. They are grouped by discipline without invented proficiency scores. Research performance claims remain subject to the project evidence boundaries.
 
-The medical robotics education entry describes graduate coursework, not an awarded certificate.
+The medical robotics education entry records a Duke University graduate certificate.
 
 The Dean’s Research Award links to the owner's NEURO announcement. The Boston University scholarship is described as a graduate admission offer, not an institution attended. The resume's generic Duke Competitive Research Grant is not counted as a separate award without confirmation that it is distinct. No award amount is inferred.
 
