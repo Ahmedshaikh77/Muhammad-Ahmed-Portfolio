@@ -28,7 +28,10 @@
   const glyphs = '/cmd_vel/joint_states/tf/odom/imu/emg/ppg/plan/exec 0123456789abcdef,.';
 
   const enabled = () => motionQuery.matches && !manuallyPaused && !touchInput && !document.hidden;
-  const hideRadar = () => { radar.hidden = true; };
+  const hideRadar = () => {
+    radar.hidden = true;
+    document.documentElement.removeAttribute('data-radar-active');
+  };
 
   function sizeStream() {
     const bounds = hero.getBoundingClientRect();
@@ -116,8 +119,10 @@
     radar.style.left = `${event.clientX}px`;
     radar.style.top = `${event.clientY}px`;
     radar.hidden = false;
+    document.documentElement.setAttribute('data-radar-active', 'true');
   }, { passive: true });
   document.addEventListener('pointerdown', updateInput, { passive: true });
+  document.addEventListener('pointercancel', hideRadar, { passive: true });
 
   toggle.addEventListener('click', () => {
     manuallyPaused = !manuallyPaused;

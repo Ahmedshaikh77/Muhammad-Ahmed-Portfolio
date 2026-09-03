@@ -5,6 +5,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const html = read('index.html');
 const css = read('assets/css/styles.css');
+const effectsCss = read('assets/css/effects.css');
 
 const cssRule = (selector) => {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -174,8 +175,24 @@ test('styles support focus, mobile touch targets, and reduced motion', () => {
   assert.match(css, /:focus-visible/);
   assert.match(css, /min-(?:height|block-size):\s*44px/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
-  assert.doesNotMatch(css, /cursor:\s*none/);
+  assert.match(effectsCss, /html\[data-radar-active="true"\][\s\S]*cursor:\s*none\s*!important/);
   assert.doesNotMatch(css, /@import\s+url/);
+});
+
+test('site header spans the viewport with responsive edge padding', () => {
+  const headerRule = cssRule('.site-header');
+  assert.match(headerRule, /width:\s*100%/);
+  assert.match(headerRule, /padding-inline:\s*20px/);
+  assert.match(css, /@media\s*\(min-width:\s*900px\)[\s\S]*\.site-header\s*\{[\s\S]*padding-inline:\s*40px/);
+});
+
+test('compact navigation does not apply phone-only project layouts to tablets', () => {
+  const compactStart = css.indexOf('@media (max-width: 899px)');
+  const phoneStart = css.indexOf('@media (max-width: 767px)');
+  assert.ok(compactStart >= 0, 'compact navigation query should exist');
+  assert.ok(phoneStart > compactStart, 'phone-only query should follow compact navigation');
+  assert.doesNotMatch(css.slice(compactStart, phoneStart), /\.project-card/);
+  assert.match(css.slice(phoneStart), /\.project-card/);
 });
 
 test('mobile brand exposes a 44 by 44 pixel minimum target', () => {
@@ -213,7 +230,7 @@ test('mobile navigation script maintains accessible state', () => {
   const script = read('assets/js/main.js');
   assert.match(script, /setAttribute\('aria-expanded'/);
   assert.match(script, /event\.key === 'Escape'/);
-  assert.match(script, /matchMedia\('\(min-width: 768px\)'\)/);
+  assert.match(script, /matchMedia\('\(min-width: 900px\)'\)/);
 });
 
 test('README records authorship, deployment, accessibility, and media provenance', () => {

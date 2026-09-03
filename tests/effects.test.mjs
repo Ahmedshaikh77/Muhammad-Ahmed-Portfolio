@@ -137,8 +137,21 @@ test('a fine desktop pointer gets a decorative follower only after moving', () =
   assert.equal(page.radar.hidden, true);
   page.move(180, 240);
   assert.equal(page.radar.hidden, false);
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), 'true');
   assert.equal(page.radar.style.left, '180px');
   assert.equal(page.radar.style.top, '240px');
+});
+
+test('the radar replaces the native pointer only while it is visible', () => {
+  const page = browser();
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
+  page.move();
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), 'true');
+  emit(page.document, 'keydown', { key: 'Tab' });
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
+  page.move();
+  emit(page.document, 'pointercancel', { pointerType: 'mouse' });
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
 });
 
 for (const [name, conditions] of [
@@ -153,6 +166,7 @@ for (const [name, conditions] of [
     assert.equal(page.radar.hidden, false);
     page.setConditions(conditions);
     assert.equal(page.radar.hidden, true);
+    assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
     page.move();
     assert.equal(page.radar.hidden, true);
     assert.equal(page.toggle.hidden, true);
@@ -175,6 +189,7 @@ for (const [name, hide] of [
     assert.equal(page.radar.hidden, false);
     hide(page);
     assert.equal(page.radar.hidden, true);
+    assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
   });
 }
 
@@ -187,6 +202,7 @@ test('a changing action label controls manual pause without conflicting toggle s
   emit(page.toggle, 'click');
   assert.equal(page.toggle.textContent, 'Play effects');
   assert.equal(page.radar.hidden, true);
+  assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
   page.move();
   assert.equal(page.radar.hidden, true);
   emit(page.toggle, 'click');

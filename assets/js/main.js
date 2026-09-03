@@ -2,7 +2,7 @@ document.documentElement.classList.add('js');
 
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('#primary-navigation');
-const desktopQuery = window.matchMedia('(min-width: 768px)');
+const desktopQuery = window.matchMedia('(min-width: 900px)');
 
 if (menuButton && navigation) {
   const setOpen = (open) => {
