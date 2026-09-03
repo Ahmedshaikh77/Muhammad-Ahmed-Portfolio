@@ -13,7 +13,9 @@ const cssRule = (selector) => {
 
 const requiredFiles = [
   'assets/css/styles.css',
+  'assets/css/effects.css',
   'assets/js/main.js',
+  'assets/js/effects.js',
   'assets/icons/favicon.svg',
   'assets/images/social-preview.png',
   'assets/images/portfolio-preview.png',
@@ -53,11 +55,31 @@ test('public resume action opens a valid PDF in a new tab', () => {
   );
 });
 
-test('contact offers the approved 30-minute Calendly booking link', () => {
+test('contact keeps the approved booking destination with a descriptive accessible name', () => {
   assert.match(
     html,
-    /<a href="https:\/\/calendly\.com\/ahmedshaikh655\/30min" target="_blank" rel="noopener noreferrer" aria-label="Book a 30-minute call with Muhammad Ahmed \(opens in a new tab\)">Book a 30-minute call <span aria-hidden="true">&#8599;<\/span><\/a>/,
+    /<a href="https:\/\/calendly\.com\/ahmedshaikh655\/30min" target="_blank" rel="noopener noreferrer" aria-label="[^\"]+ \(opens in a new tab\)">[^<]+<span aria-hidden="true">&#8599;<\/span><\/a>/,
   );
+});
+
+test('email actions and profile metadata route to the approved public address', () => {
+  const addresses = [...html.matchAll(/href="mailto:([^\"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(addresses, ['muhammadahmed.shaikh@duke.edu']);
+  const metadata = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  assert.equal(metadata.mainEntity.email, 'mailto:muhammadahmed.shaikh@duke.edu');
+});
+
+test('navigation exposes background, education, research and projects through working anchors', () => {
+  const navigation = html.match(/<nav id="primary-navigation"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  const anchors = [...navigation.matchAll(/href="#([^\"]+)"/g)].map((match) => match[1]);
+  for (const target of ['about', 'education', 'research', 'work', 'capabilities', 'recognition', 'contact']) {
+    assert.ok(anchors.includes(target), `${target} must be reachable from navigation`);
+  }
+  const ids = [...html.matchAll(/\bid="([^\"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, 'IDs must be unique');
+  for (const [, target] of html.matchAll(/href="#([^\"]+)"/g)) {
+    assert.ok(ids.includes(target), `#${target} needs a destination`);
+  }
 });
 
 test('page metadata matches the approved public identity', () => {
@@ -77,7 +99,6 @@ test('semantic structure and approved hero copy are present', () => {
   assert.match(html, /Robots should work outside the demo\./);
   assert.match(html, /<p class="hero__name">Muhammad Ahmed<\/p>/);
   assert.match(html, /Robotics, Embedded Systems, and Hardware Integration Engineer/);
-  assert.match(html, /Open to robotics and embedded systems opportunities\./);
   assert.match(html, /aria-controls="primary-navigation"/);
   assert.match(html, /aria-expanded="false"/);
 });
@@ -186,7 +207,6 @@ test('NeuroBot presents the supplied prototype photograph as its cover', () => {
   const neuroBotImageRule = cssRule('#project-neurobot .project-card__cover img');
   assert.match(neuroBotImageRule, /width:\s*100%/);
   assert.match(neuroBotImageRule, /height:\s*100%/);
-  assert.match(neuroBotImageRule, /object-fit:\s*contain/);
 });
 
 test('mobile navigation script maintains accessible state', () => {

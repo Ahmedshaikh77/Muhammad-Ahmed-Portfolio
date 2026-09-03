@@ -19,7 +19,8 @@
   <meta name="twitter:title" content="Muhammad Ahmed | Robotics and Embedded Systems Engineer">
   <meta name="twitter:description" content="Selected work in ROS 2, embedded sensing, and edge perception.">
   <meta name="twitter:image" content="https://ahmedshaikh77.github.io/Muhammad-Ahmed-Portfolio/assets/images/social-preview.png">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260903-4">
+  <link rel="stylesheet" href="assets/css/effects.css?v=20260903-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +30,7 @@
       "@type": "Person",
       "name": "Muhammad Ahmed",
       "jobTitle": "Robotics, Embedded Systems, and Hardware Integration Engineer",
-      "email": "mailto:ms1242@duke.edu",
+      "email": "mailto:muhammadahmed.shaikh@duke.edu",
       "alumniOf": {
         "@type": "CollegeOrUniversity",
         "name": "Duke University"
@@ -52,21 +53,24 @@
       <span class="menu-button__icon" aria-hidden="true"></span>
     </button>
     <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
-      <a href="#work">Selected Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#capabilities">Capabilities</a>
       <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#work">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#capabilities">Skills</a>
+      <a href="#recognition">Recognition</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
   <main id="main-content">
     <section id="top" class="hero" aria-labelledby="hero-title">
+      <canvas class="hero-stream" aria-hidden="true" hidden></canvas>
       <div class="hero__copy">
         <p class="hero__name">Muhammad Ahmed</p>
         <p class="eyebrow">Robotics, Embedded Systems, and Hardware Integration Engineer</p>
         <h1 id="hero-title">Robots should work outside the demo.</h1>
         <p class="hero__lede">I connect sensing, embedded software, motion planning, and physical hardware to build robotics systems that can be tested honestly.</p>
-        <p class="availability"><span aria-hidden="true"></span>Open to robotics and embedded systems opportunities.</p>
         <div class="hero__actions" aria-label="Portfolio actions">
           <a class="button button--primary" href="#work">View selected work</a>
           <a class="button button--secondary" href="assets/resume/Muhammad-Ahmed.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Muhammad Ahmed resume (opens in a new tab)">Resume</a>
@@ -82,7 +86,52 @@
           <li><span>03</span> Act</li>
           <li><span>04</span> Verify</li>
         </ol>
+        <button class="motion-toggle" type="button" hidden>Pause effects</button>
       </aside>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="section-heading"><h2 id="about-title">About</h2></div>
+      <div class="about__copy">
+        <p>I am a robotics and mechanical engineer with an M.S. from Duke University. I enjoy the hands-on work of bringing a system together: designing a mechanism, connecting its electronics, making sense of its sensors, and getting the software to move real hardware.</p>
+        <p>My projects span robotic manipulation, embedded sensing, assistive devices, and human-robot interaction. I document what I built, what I tested, and what still needs work so others can understand and build on it.</p>
+      </div>
+    </section>
+
+    <section id="education" class="education" aria-labelledby="education-title">
+      <div class="section-heading"><h2 id="education-title">Education</h2></div>
+      <div class="education__grid">
+        <article class="education-card">
+          <p class="detail-label">Duke University · May 2026</p>
+          <h3>M.S. Mechanical Engineering &amp; Materials Science</h3>
+          <p>GPA 3.74 / 4.0</p>
+          <p class="education-card__focus">Robotics, manipulation, medical robotics, scientific computing, and experimental design.</p>
+        </article>
+        <article class="education-card">
+          <p class="detail-label">Duke University · Graduate coursework</p>
+          <h3>Medical robotics</h3>
+          <p class="education-card__focus">Medical and surgical robotics, robotic manipulation, and simulation.</p>
+        </article>
+        <article class="education-card">
+          <p class="detail-label">SRM Institute of Science and Technology · May 2023</p>
+          <h3>B.Tech. Mechanical Engineering</h3>
+          <p>CGPA 8.18 / 10</p>
+          <p class="education-card__focus">Mechanical engineering foundation with research in tribology and materials characterization.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="research" class="research" aria-labelledby="research-title">
+      <div class="section-heading"><h2 id="research-title">Research &amp; publication</h2></div>
+      <article class="publication">
+        <div class="publication__context"><p class="detail-label">Tribology &amp; materials</p><p>Research Assistant<br>SRM Institute of Science and Technology<br>April 2022 to September 2023</p></div>
+        <div class="publication__body">
+          <h3>Tribo-Corrosion and Mechanical Performance of Electro-deposited Nano-Composite h-BN/Epoxy Coating</h3>
+          <p class="publication__journal">Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology · 2024</p>
+          <p>Studied coatings for wear and corrosion resistance through controlled lab experiments. My work included pin-on-disc testing, electrochemical impedance spectroscopy, FTIR, experimental design, and statistical analysis.</p>
+          <a class="evidence-link" href="https://journals.sagepub.com/doi/10.1177/13506501241257560" target="_blank" rel="noopener noreferrer" aria-label="Read Tribo-Corrosion and Mechanical Performance of Electro-deposited Nano-Composite h-BN/Epoxy Coating (opens in a new tab)">Read the paper <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
     </section>
 
     <section id="work" class="work" aria-labelledby="work-title">
@@ -186,36 +235,42 @@
     </section>
 
     <section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
-      <div class="section-heading"><h2 id="capabilities-title">Capabilities</h2></div>
+      <div class="section-heading"><h2 id="capabilities-title">Technical skills</h2><p class="section-intro">Tools and methods I have used across projects, lab work, research, and coursework.</p></div>
       <div class="capabilities__grid">
-        <section class="capability" aria-labelledby="capability-robotics-title"><h3 id="capability-robotics-title"><a href="#project-kinova">Robotics software</a></h3><ul><li>ROS 2</li><li>MoveIt 2</li><li>RViz</li><li>Gazebo</li><li>motion planning</li><li>planning scenes</li><li>gripper interfaces</li></ul></section>
-        <section class="capability" aria-labelledby="capability-embedded-title"><h3 id="capability-embedded-title"><a href="#project-crutch">Embedded systems</a></h3><ul><li>ESP32</li><li>microcontrollers</li><li>sensing</li><li>telemetry</li><li>embedded Linux</li></ul></section>
-        <section class="capability" aria-labelledby="capability-perception-title"><h3 id="capability-perception-title"><a href="#project-neurobot">Perception and edge compute</a></h3><ul><li>Python</li><li>PyTorch</li><li>OpenCV</li><li>MediaPipe</li><li>NVIDIA Jetson</li></ul></section>
-        <section class="capability" aria-labelledby="capability-hardware-title"><h3 id="capability-hardware-title"><a href="#project-crutch">Hardware and mechatronics</a></h3><ul><li>sensor and actuator integration</li><li>prototyping</li><li>CAD</li><li>test documentation</li></ul></section>
+        <section class="capability" aria-labelledby="capability-robotics-title"><h3 id="capability-robotics-title">Robotics &amp; control</h3><ul><li>ROS 2 / Humble</li><li>MoveIt 2</li><li>RViz</li><li>Gazebo</li><li>URDF / Xacro</li><li>Kinova Gen3 Lite / Kortex</li><li>UR5e</li><li>Motion planning</li><li>Cartesian planning</li><li>Planning scenes</li><li>Gripper interfaces</li><li>Forward / inverse kinematics</li><li>Jacobian analysis</li><li>Control theory</li><li>Robot bring-up</li></ul><a class="evidence-link" href="#project-kinova">See manipulation work <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-embedded-title"><h3 id="capability-embedded-title">Embedded systems</h3><ul><li>ESP32</li><li>Arduino</li><li>NVIDIA Jetson</li><li>Raspberry Pi</li><li>Embedded Linux</li><li>Microcontroller firmware</li><li>MCU sensor drivers</li><li>I²C</li><li>Wi-Fi / TCP</li><li>Bluetooth Low Energy</li><li>Real-time control loops</li><li>Telemetry</li></ul><a class="evidence-link" href="#project-crutch">See embedded work <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-hardware-title"><h3 id="capability-hardware-title">Electronics &amp; integration</h3><ul><li>Sensor integration</li><li>Actuator integration</li><li>Electronics bring-up</li><li>Soldering</li><li>Schematics</li><li>PCB debugging</li><li>Oscilloscopes</li><li>Logic analyzers</li><li>Signal troubleshooting</li><li>Instrumented test setups</li></ul><a class="evidence-link" href="#experience">See lab experience <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-mechanical-title"><h3 id="capability-mechanical-title">Mechanical design &amp; fabrication</h3><ul><li>SolidWorks</li><li>Fusion 360</li><li>AutoCAD</li><li>FEA</li><li>Design for manufacturing</li><li>3D printing</li><li>CNC machining</li><li>Laser cutting</li><li>Rapid prototyping</li><li>Enclosure design</li><li>Electromechanical assembly</li></ul><a class="evidence-link" href="#project-armbot">See arm design work <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-perception-title"><h3 id="capability-perception-title">Perception &amp; machine learning</h3><ul><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>OpenCV</li><li>MediaPipe</li><li>CNNs</li><li>Feature engineering</li><li>Multimodal sensor fusion</li><li>Edge inference</li><li>Camera / audio pipelines</li><li>LLM integration</li><li>Human-robot interaction</li></ul><a class="evidence-link" href="#project-neurobot">See NeuroBot <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-sensing-title"><h3 id="capability-sensing-title">Sensing &amp; biomedical signals</h3><ul><li>IMUs / accelerometers</li><li>Load cells</li><li>Cameras / RealSense</li><li>sEMG</li><li>PPG</li><li>GSR</li><li>Bandpass filtering</li><li>Windowed classification</li><li>Time-series analysis</li><li>Tremor characterization</li><li>Wearable sensing</li></ul><a class="evidence-link" href="#project-crutch">See sensing work <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-software-title"><h3 id="capability-software-title">Programming &amp; tools</h3><ul><li>Python</li><li>C / C++</li><li>Bash</li><li>MATLAB</li><li>Simulink</li><li>NumPy</li><li>pandas</li><li>Linux / Ubuntu</li><li>Git / GitHub</li><li>Docker</li><li>Data pipelines</li><li>Structured storage &amp; reporting</li></ul><a class="evidence-link" href="#work">See software projects <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability" aria-labelledby="capability-testing-title"><h3 id="capability-testing-title">Testing &amp; validation</h3><ul><li>System-level debugging</li><li>Requirements-based testing</li><li>Pass / fail criteria</li><li>Regression tests</li><li>Fault injection</li><li>Latency / power measurement</li><li>Log analysis</li><li>CI / CD</li><li>Monitoring &amp; alerting</li><li>Test documentation</li><li>Repeatable experiments</li></ul><a class="evidence-link" href="#project-neurobot">See testing tools <span aria-hidden="true">&#8593;</span></a></section>
+        <section class="capability capability--research" aria-labelledby="capability-research-title"><h3 id="capability-research-title">Research methods</h3><ul><li>Design of experiments</li><li>Statistical analysis</li><li>Taguchi optimization</li><li>Pin-on-disc wear testing</li><li>EIS</li><li>FTIR</li><li>XRD</li><li>Water-contact-angle testing</li><li>Crosshatch adhesion testing</li><li>Technical writing</li></ul><a class="evidence-link" href="#research">See published research <span aria-hidden="true">&#8593;</span></a></section>
       </div>
     </section>
 
-    <section id="about" class="about" aria-labelledby="about-title">
-      <div class="section-heading"><h2 id="about-title">About</h2></div>
-      <div class="about__copy"><p>I work across the complete robotic system because most real failures do not respect discipline boundaries. A calibration offset can look like a planning problem, an electrical limitation can appear as unstable control, and a clean simulation can still hide a hardware integration issue. My approach is to make each boundary observable, document what the evidence proves, and iterate from the physical system back into the model.</p></div>
-      <div class="about__details">
-        <section class="education" aria-labelledby="education-title"><h3 id="education-title">Education</h3><ul><li>M.S. Mechanical Engineering and Materials Science, Duke University, 2026</li><li>B.Tech. Mechanical Engineering, SRM Institute of Science and Technology</li></ul></section>
-        <section class="research" aria-labelledby="research-title"><h3 id="research-title">Research</h3><p><a href="https://journals.sagepub.com/doi/10.1177/13506501241257560" target="_blank" rel="noopener noreferrer" aria-label="Read Tribo-Corrosion and Mechanical Performance of Electro-deposited Nano-Composite h-BN/Epoxy Coating (opens in a new tab)">Tribo-Corrosion and Mechanical Performance of Electro-deposited Nano-Composite h-BN/Epoxy Coating <span aria-hidden="true">&#8599;</span></a></p></section>
+    <section id="recognition" class="recognition" aria-labelledby="recognition-title">
+      <div class="section-heading"><h2 id="recognition-title">Awards &amp; recognition</h2></div>
+      <div class="recognition__grid">
+        <article class="recognition-card recognition-card--featured"><p class="detail-label">Duke University · Research</p><h3>Dean’s Research Award</h3><p>Recognition for NEURO, my neuro-adaptive robotic companion project, supporting further work on perception, decision logic, and human-robot interaction.</p><a class="evidence-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7391179702222176256/" target="_blank" rel="noopener noreferrer" aria-label="View the Dean’s Research Award announcement (opens in a new tab)">View announcement <span aria-hidden="true">&#8599;</span></a></article>
+        <article class="recognition-card"><p class="detail-label">Boston University · Admission offer</p><h3>Dean’s Scholarship</h3><p>Scholarship awarded with a graduate admission offer. I chose to pursue my master’s at Duke.</p><a class="evidence-link" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7210234447785349122/" target="_blank" rel="noopener noreferrer" aria-label="View the graduate scholarship announcement (opens in a new tab)">View announcement <span aria-hidden="true">&#8599;</span></a></article>
       </div>
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="contact__copy"><h2 id="contact-title">Building robotics that crosses the boundary between software and hardware?</h2><p>I am open to robotics, embedded systems, sensor integration, actuator integration, manipulation, and hardware-software systems roles.</p></div>
       <address class="contact__links">
-        <a href="https://calendly.com/ahmedshaikh655/30min" target="_blank" rel="noopener noreferrer" aria-label="Book a 30-minute call with Muhammad Ahmed (opens in a new tab)">Book a 30-minute call <span aria-hidden="true">&#8599;</span></a>
-        <a href="mailto:ms1242@duke.edu">Email</a>
+        <a href="https://calendly.com/ahmedshaikh655/30min" target="_blank" rel="noopener noreferrer" aria-label="Let’s connect: schedule a conversation with Muhammad Ahmed (opens in a new tab)">Let’s connect <span aria-hidden="true">&#8599;</span></a>
+        <a href="mailto:muhammadahmed.shaikh@duke.edu">muhammadahmed.shaikh@duke.edu</a>
         <a href="https://www.linkedin.com/in/muhammad-ahmed-nazir-shaikh/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Muhammad Ahmed on LinkedIn (opens in a new tab)">LinkedIn <span aria-hidden="true">&#8599;</span></a>
         <a href="https://github.com/Ahmedshaikh77" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed on GitHub (opens in a new tab)">GitHub <span aria-hidden="true">&#8599;</span></a>
         <a href="https://x.com/ShaikhRobotics" target="_blank" rel="noopener noreferrer" aria-label="View Muhammad Ahmed on X (opens in a new tab)">X <span aria-hidden="true">&#8599;</span></a>
       </address>
     </section>
   </main>
-  <footer class="site-footer"><p>© 2026 Muhammad Ahmed</p></footer>
+  <footer class="site-footer"><p>Muhammad Ahmed</p></footer>
+  <div class="radar-cursor" aria-hidden="true" hidden><svg viewBox="0 0 32 32" focusable="false"><circle class="r-ring" cx="16" cy="16" r="11"/><circle class="r-ring2" cx="16" cy="16" r="6.5"/><g class="r-tick"><path d="M16 3v3M16 26v3M3 16h3M26 16h3"/></g><circle class="r-blip" cx="21" cy="11.5" r="1.1"/><circle class="r-blip r-blip--second" cx="11" cy="20.5" r="1.1"/><g class="r-sweep"><path class="r-seg" d="M16 16L16 5A11 11 0 0 0 6.47 10.5Z"/><path class="r-line" d="M16 16V5"/></g><circle class="r-dot" cx="16" cy="16" r="1.7"/></svg></div>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/effects.js?v=20260903-1" defer></script>
 </body>
 </html>
