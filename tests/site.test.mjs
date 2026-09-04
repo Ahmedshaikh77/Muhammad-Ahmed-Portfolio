@@ -111,7 +111,7 @@ test('every project presents the same three recruiter-scannable facts', () => {
   for (const [, facts] of factLists) {
     assert.deepEqual(
       [...facts.matchAll(/<dt>([^<]+)<\/dt>/g)].map((match) => match[1]),
-      ['Outcome', 'My role', 'Proof'],
+      ['Outcome', 'What I built', 'Proof'],
     );
   }
 });

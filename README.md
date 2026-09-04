@@ -12,7 +12,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 
 ## Selected features
 
-- Evidence-first case studies with repository-sourced media
+- Evidence-first case studies organized as Outcome, What I built, and Proof, with repository-sourced media
 - Recruiter-ready Resume access above the fold
 - “Schedule a meeting” booking action through Calendly and an “Email” link to the Duke email address
 - About, education, and published research before the project case studies
