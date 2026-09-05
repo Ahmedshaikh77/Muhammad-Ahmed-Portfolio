@@ -116,41 +116,50 @@ test('every project presents the same three recruiter-scannable facts', () => {
   }
 });
 
-test('awards section renders seven distinct structured cards with one featured entry', () => {
+test('awards section renders the six approved cards and links every card to the honors page', () => {
   const section = html.match(/<section id="recognition"[\s\S]*?<\/section>/)?.[0] ?? '';
   const cards = [...section.matchAll(/<article class="recognition-card([^\"]*)">([\s\S]*?)<\/article>/g)];
   const approvedTitles = [
     'Outstanding Master’s Poster Award',
     'Dean’s Research Award for Master’s Students',
     'Innovation Co-Lab Grant',
-    'Dean’s Scholarship',
     'Best Project BTech Mechanical 2022-2023',
     'Best Research Award in Research Day 2023',
     'Industrial Tribology: Towards Sustainable Approaches',
   ];
+  const honorsUrl = 'https://www.linkedin.com/in/muhammad-ahmed-nazir-shaikh/details/honors/';
 
-  assert.equal(cards.length, 7);
+  assert.equal(cards.length, 6);
   assert.equal(cards.filter(([, modifiers]) => modifiers.includes('recognition-card--featured')).length, 1);
 
   const titles = cards.map(([, , card]) => card.match(/<h3>([^<]+)<\/h3>/)?.[1] ?? '');
   assert.deepEqual(titles, approvedTitles);
   assert.match(cards[0][1], /recognition-card--featured/);
+  assert.doesNotMatch(section, /Boston University|Dean’s Scholarship/);
 
-  for (const [, , card] of cards) {
+  for (const [index, [, , card]] of cards.entries()) {
     assert.match(card, /<p class="detail-label">[^<]+<\/p>/);
     assert.match(card, /<h3>[^<]+<\/h3>/);
     assert.match(card, /<p>[^<]+<\/p>/);
+
+    const links = [...card.matchAll(/<a class="evidence-link" href="([^"]+)" target="_blank" rel="noopener noreferrer" aria-label="([^"]+)">View announcement <span aria-hidden="true">&#8599;<\/span><\/a>/g)];
+    assert.equal(links.length, 1);
+    assert.equal(links[0][1], honorsUrl);
+    assert.match(links[0][2], new RegExp(`^View ${approvedTitles[index].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} announcement \\(opens in a new tab\\)$`));
   }
 });
 
-test('featured recognition balances the two-column awards grid', () => {
+test('six recognition cards remain paired in the two-column awards grid', () => {
   const featuredRule = cssRule('.recognition-card--featured');
-  assert.match(featuredRule, /grid-column:\s*1\s*\/\s*-1/);
+  assert.match(featuredRule, /grid-column:\s*auto/);
+  assert.match(css, /\.recognition__grid\s*\{\s*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/);
 });
 
-test('recognition cards remove trailing paragraph spacing when no link follows', () => {
-  const finalParagraphRule = cssRule('.recognition-card p:last-child');
-  assert.match(finalParagraphRule, /margin-bottom:\s*0/);
+test('award links align at the bottom of each desktop card', () => {
+  const linkRule = cssRule('.recognition-card .evidence-link');
+
+  assert.match(css, /\.recognition-card\s*\{[^}]*display:\s*flex[^}]*flex-direction:\s*column/);
+  assert.match(linkRule, /margin-top:\s*auto/);
 });
 
 test('featured projects and factual boundaries are explicit', () => {
