@@ -79,7 +79,7 @@ Skills draw from the supplied public resume, the previous portfolio, and the own
 
 The medical robotics education entry records a Duke University graduate certificate.
 
-The Dean’s Research Award links to the owner's NEURO announcement. The Boston University scholarship is described as a graduate admission offer, not an institution attended. The resume's generic Duke Competitive Research Grant is not counted as a separate award without confirmation that it is distinct. No award amount is inferred.
+The recognition section records seven distinct screenshot-supported entries: the Duke Outstanding Master’s Poster Award, Dean’s Research Award for Master’s Students, Innovation Co-Lab Grant, Boston University Dean’s Scholarship, SRMIST Best Project BTech Mechanical 2022-2023, Best Research Award in Research Day 2023, and Industrial Tribology workshop recognition. The Dean’s Research Award links to the owner's NEURO announcement. The Boston University scholarship is described as a graduate admission offer, not an institution attended. No award amount, selectivity, or unsupported project association is inferred.
 
 ## Media provenance
 

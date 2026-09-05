@@ -735,6 +735,8 @@ main > section:not(.hero) {
 .education-card p:last-child,
 .publication p:last-child { margin-bottom: 0; }
 
+.recognition-card p:last-child { margin-bottom: 0; }
+
 .detail-label,
 .education-card .detail-label,
 .recognition-card .detail-label,
@@ -786,7 +788,10 @@ main > section:not(.hero) {
   color: var(--muted);
 }
 
-.recognition-card--featured { border-color: rgb(255 79 154 / 0.5); }
+.recognition-card--featured {
+  grid-column: 1 / -1;
+  border-color: rgb(255 79 154 / 0.5);
+}
 
 /* High-contrast contact panel */
 .contact {

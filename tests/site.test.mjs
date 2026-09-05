@@ -116,6 +116,43 @@ test('every project presents the same three recruiter-scannable facts', () => {
   }
 });
 
+test('awards section renders seven distinct structured cards with one featured entry', () => {
+  const section = html.match(/<section id="recognition"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const cards = [...section.matchAll(/<article class="recognition-card([^\"]*)">([\s\S]*?)<\/article>/g)];
+  const approvedTitles = [
+    'Outstanding Master’s Poster Award',
+    'Dean’s Research Award for Master’s Students',
+    'Innovation Co-Lab Grant',
+    'Dean’s Scholarship',
+    'Best Project BTech Mechanical 2022-2023',
+    'Best Research Award in Research Day 2023',
+    'Industrial Tribology: Towards Sustainable Approaches',
+  ];
+
+  assert.equal(cards.length, 7);
+  assert.equal(cards.filter(([, modifiers]) => modifiers.includes('recognition-card--featured')).length, 1);
+
+  const titles = cards.map(([, , card]) => card.match(/<h3>([^<]+)<\/h3>/)?.[1] ?? '');
+  assert.deepEqual(titles, approvedTitles);
+  assert.match(cards[0][1], /recognition-card--featured/);
+
+  for (const [, , card] of cards) {
+    assert.match(card, /<p class="detail-label">[^<]+<\/p>/);
+    assert.match(card, /<h3>[^<]+<\/h3>/);
+    assert.match(card, /<p>[^<]+<\/p>/);
+  }
+});
+
+test('featured recognition balances the two-column awards grid', () => {
+  const featuredRule = cssRule('.recognition-card--featured');
+  assert.match(featuredRule, /grid-column:\s*1\s*\/\s*-1/);
+});
+
+test('recognition cards remove trailing paragraph spacing when no link follows', () => {
+  const finalParagraphRule = cssRule('.recognition-card p:last-child');
+  assert.match(finalParagraphRule, /margin-bottom:\s*0/);
+});
+
 test('featured projects and factual boundaries are explicit', () => {
   const requiredCopy = [
     'Kinova Gen3 Lite manipulation suite',
