@@ -17,7 +17,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 - “Schedule a meeting” booking action through Calendly and an “Email” link to the Duke email address
 - About, education, and published research before the project case studies
 - Grouped technical skills and source-linked recognition
-- Optional desktop radar pointer effect and subtle ROS-topic background animation
+- Desktop radar cursor, animated circuit traces, and a robotics signal-flow illustration
 - Accurate project status and validation boundaries
 - Responsive layouts for mobile, tablet, and desktop
 - Keyboard-operable navigation and reduced-motion support
@@ -71,7 +71,9 @@ The site is published from the repository's `main` branch through GitHub Pages. 
 
 The site uses semantic landmarks and heading order, a skip link, visible keyboard focus, 44-pixel mobile targets, reduced-motion styles, explicit image dimensions, local system fonts, and progressive enhancement. Core content stays visible if JavaScript is unavailable.
 
-On supported desktop layouts, the radar replaces the native pointer while it is active and never blocks interaction. The native pointer returns whenever the effect is paused, hidden, or unavailable. The animated canvas is limited to the introduction and pauses when it is offscreen or the tab is hidden. Effects are disabled on small/touch layouts and when reduced motion is requested. The introduction also offers a manual pause control.
+On supported desktop layouts, the radar replaces the native pointer while it is active and never blocks interaction. The native pointer returns whenever the effect is paused, hidden, or unavailable. Pink circuit traces sit beside the introduction copy; a signal packet follows Sensors → Controller → Motors → Feedback while Sense / Decide / Act / Verify highlights advance together. This is an illustrative control loop, not live telemetry or a claim about project performance.
+
+One elapsed-time animation loop is capped at 24 paints per second and a pixel density of 2. It stops when the introduction is offscreen or the tab is hidden. “Pause animations” / “Play animations” preserves the current signal position. Small/touch layouts and reduced-motion preferences show a static schematic without a custom cursor or background animation. Core content and the schematic remain available without JavaScript.
 
 ## Content sources
 

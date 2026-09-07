@@ -6,6 +6,9 @@
   const hero = document.querySelector('.hero');
   const canvas = document.querySelector('.hero-stream');
   if (!radar || !toggle || !hero || !canvas || !window.matchMedia) return;
+  const packet = document.querySelector('.signal-packet');
+  const copy = document.querySelector('.hero__copy');
+  const system = document.querySelector('.hero__system');
 
   let context = null;
   try {
@@ -24,8 +27,12 @@
   let lastDraw = 0;
   let width = 0;
   let height = 0;
-  let columns = [];
-  const glyphs = '/cmd_vel/joint_states/tf/odom/imu/emg/ppg/plan/exec 0123456789abcdef,.';
+  let traces = [];
+  let activeTime = 0;
+  let currentStage = -1;
+  const stages = ['sense', 'decide', 'act', 'verify'];
+  // Coordinates match the four nodes in the decorative signal-board SVG.
+  const signalNodes = [[66, 65], [230, 65], [230, 187], [66, 187]];
 
   const enabled = () => motionQuery.matches && !manuallyPaused && !touchInput && !document.hidden;
   const hideRadar = () => {
@@ -41,34 +48,82 @@
     canvas.width = Math.ceil(width * dpr);
     canvas.height = Math.ceil(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.min(36, Math.max(8, Math.floor(width / 44)));
-    columns = Array.from({ length: count }, (_, index) => ({
-      x: (index + 0.5) * width / count,
-      y: Math.random() * height,
-      speed: 12 + Math.random() * 18,
-      offset: Math.floor(Math.random() * glyphs.length),
-    }));
+    const copyRight = copy ? copy.getBoundingClientRect().right - bounds.left : width * 0.68;
+    const boardTop = system ? system.getBoundingClientRect().top - bounds.top : height * 0.4;
+    const left = Math.min(width - 70, Math.max(width * 0.6, copyRight + 16));
+    // Route the background beside the copy and behind the opaque system card.
+    traces = [
+      [[left, 22], [left, Math.max(70, boardTop + 66)], [width - 60, Math.max(70, boardTop + 66)]],
+      [[left + 24, 42], [width - 16, 42], [width - 16, height - 16], [left + 24, height - 16]],
+      [[width - 54, 10], [width - 54, Math.max(55, boardTop - 22)], [left + 40, Math.max(55, boardTop - 22)], [left + 40, height - 36]],
+      [[left - 12, height - 12], [width - 4, height - 12], [width - 4, 82], [width - 80, 82]],
+    ].map((points) => {
+      const lengths = points.slice(1).map((point, index) =>
+        Math.hypot(point[0] - points[index][0], point[1] - points[index][1]));
+      return { points, lengths, total: lengths.reduce((sum, length) => sum + length, 0) };
+    });
     needsSize = false;
+  }
+
+  function pointAlong(trace, progress) {
+    let distance = progress * trace.total;
+    for (let index = 0; index < trace.lengths.length; index += 1) {
+      const length = trace.lengths[index];
+      if (distance <= length || index === trace.lengths.length - 1) {
+        const amount = length ? distance / length : 0;
+        const start = trace.points[index];
+        const end = trace.points[index + 1];
+        return [start[0] + (end[0] - start[0]) * amount, start[1] + (end[1] - start[1]) * amount];
+      }
+      distance -= length;
+    }
+    return trace.points[0];
+  }
+
+  function syncSignal() {
+    const phase = (activeTime % 8000) / 2000;
+    const stage = Math.floor(phase);
+    if (stage !== currentStage) {
+      hero.setAttribute('data-signal-stage', stages[stage]);
+      currentStage = stage;
+    }
+    if (packet) {
+      const start = signalNodes[stage];
+      const end = signalNodes[(stage + 1) % signalNodes.length];
+      const fraction = phase - stage;
+      packet.setAttribute('cx', start[0] + (end[0] - start[0]) * fraction);
+      packet.setAttribute('cy', start[1] + (end[1] - start[1]) * fraction);
+    }
   }
 
   function drawStream(now) {
     frame = null;
     if (!enabled() || !heroVisible) return;
     const elapsed = now - lastDraw;
-    // A capped paint rate and elapsed-time motion avoid fast displays speeding up the stream.
+    // One clock drives both illustrations; pausing never skips ahead in the control loop.
     if (elapsed >= 1000 / 24) {
-      const seconds = Math.min(elapsed / 1000, 0.1);
+      activeTime += Math.min(elapsed, 100);
       context.clearRect(0, 0, width, height);
-      context.font = '11px monospace';
-      for (const column of columns) {
-        column.y += column.speed * seconds;
-        if (column.y > height + 112) column.y = -16;
-        for (let trail = 0; trail < 7; trail += 1) {
-          context.fillStyle = trail === 0 ? 'rgba(255,45,120,0.55)' : `rgba(255,45,120,${(7 - trail) * 0.026})`;
-          const index = (column.offset + trail + Math.floor(column.y / 16)) % glyphs.length;
-          context.fillText(glyphs[(index + glyphs.length) % glyphs.length], column.x, column.y - trail * 16);
-        }
-      }
+      context.lineWidth = 1.25;
+      traces.forEach((trace, index) => {
+        context.strokeStyle = 'rgba(255,117,173,0.32)';
+        context.beginPath();
+        trace.points.forEach(([x, y], pointIndex) => {
+          if (pointIndex === 0) context.moveTo(x, y);
+          else context.lineTo(x, y);
+        });
+        context.stroke();
+        const [x, y] = pointAlong(trace, (activeTime / 6000 + index / 4) % 1);
+        context.fillStyle = 'rgba(255,79,154,0.18)';
+        context.beginPath();
+        context.arc(x, y, 8, 0, Math.PI * 2);
+        context.fill();
+        context.fillStyle = 'rgba(255,160,199,0.95)';
+        context.beginPath();
+        context.arc(x, y, 2.8, 0, Math.PI * 2);
+        context.fill();
+      });
+      syncSignal();
       lastDraw = now;
     }
     frame = window.requestAnimationFrame(drawStream);
@@ -82,16 +137,19 @@
   function syncEffects() {
     toggle.hidden = !motionQuery.matches;
     // This is an action button with a changing label, not a stable-label ARIA toggle.
-    toggle.textContent = manuallyPaused ? 'Play effects' : 'Pause effects';
+    toggle.textContent = manuallyPaused ? 'Play animations' : 'Pause animations';
     if (!enabled()) hideRadar();
     canvas.hidden = !enabled() || !context;
     if (enabled() && heroVisible && context) {
+      hero.setAttribute('data-animations', 'running');
       if (needsSize) sizeStream();
+      syncSignal();
       if (frame === null) {
         lastDraw = performance.now();
         frame = window.requestAnimationFrame(drawStream);
       }
     } else {
+      hero.removeAttribute('data-animations');
       stopStream();
     }
   }

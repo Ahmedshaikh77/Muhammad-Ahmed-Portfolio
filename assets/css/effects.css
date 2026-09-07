@@ -10,10 +10,70 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 0.8;
   pointer-events: none;
   border-radius: inherit;
-  mask-image: linear-gradient(transparent, #000 12%, #000 78%, transparent);
+  mask-image: linear-gradient(90deg, transparent 54%, #000 72%);
+}
+
+/* A legible, static schematic is the baseline on phones and without animation. */
+.hero__system {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  justify-self: end;
+  border-color: rgb(255 117 173 / 0.23);
+  background: linear-gradient(145deg, #1b151e, #101016 62%);
+}
+
+.system-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.system-heading .system-label { margin-bottom: 0; }
+.system-indicator { width: 6px; height: 6px; border: 1px solid var(--accent-strong); border-radius: 50%; }
+.system-caption { margin: 6px 0 18px; font-size: 0.85rem; color: var(--muted); }
+
+.signal-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid rgb(255 117 173 / 0.12);
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at center, rgb(255 79 154 / 0.06), transparent 70%),
+    linear-gradient(rgb(255 117 173 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 117 173 / 0.04) 1px, transparent 1px),
+    #0c0c12;
+  background-size: auto, 18px 18px, 18px 18px, auto;
+}
+
+.signal-traces { stroke: rgb(255 117 173 / 0.6); stroke-width: 1.5; }
+.signal-traces__secondary { stroke: rgb(255 117 173 / 0.18); stroke-width: 1; }
+.signal-arrows { stroke: var(--accent-strong); stroke-linecap: round; stroke-linejoin: round; }
+.signal-node > rect { fill: #17141d; stroke: #634153; stroke-width: 1; }
+.signal-icon { fill: none; stroke: #ff98c2; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.signal-node text { fill: var(--muted); font: 600 10px var(--mono); text-anchor: middle; letter-spacing: 0.02em; }
+.signal-center { fill: var(--subtle); font: 9px var(--mono); letter-spacing: 0.18em; text-anchor: middle; }
+.signal-packet { visibility: hidden; fill: #ffe1ef; stroke: var(--accent); stroke-width: 2; filter: drop-shadow(0 0 5px #ff4f9a); }
+
+.hero__system ol { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
+.hero__system li { min-height: 43px; gap: 10px; font-size: 0.88rem; }
+.hero__system li span { font-size: 0.66rem; }
+
+/* No ARIA live region: this is an illustration, not actual robot telemetry. */
+.hero[data-animations="running"] .signal-packet { visibility: visible; }
+.hero[data-animations="running"] .system-indicator { background: var(--accent-strong); box-shadow: 0 0 12px rgb(255 79 154 / 0.65); }
+.hero[data-animations="running"][data-signal-stage="sense"] .signal-node--sense > rect,
+.hero[data-animations="running"][data-signal-stage="decide"] .signal-node--decide > rect,
+.hero[data-animations="running"][data-signal-stage="act"] .signal-node--act > rect,
+.hero[data-animations="running"][data-signal-stage="verify"] .signal-node--verify > rect { fill: #412035; stroke: var(--accent-strong); stroke-width: 2; }
+.hero[data-animations="running"][data-signal-stage="sense"] .system-step--sense,
+.hero[data-animations="running"][data-signal-stage="decide"] .system-step--decide,
+.hero[data-animations="running"][data-signal-stage="act"] .system-step--act,
+.hero[data-animations="running"][data-signal-stage="verify"] .system-step--verify { color: var(--accent-strong); border-color: var(--accent); }
+
+@media (max-width: 899px) {
+  .hero__system { justify-self: start; }
 }
 
 .radar-cursor {

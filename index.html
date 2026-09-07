@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Selected work in ROS 2, embedded sensing, and edge perception.">
   <meta name="twitter:image" content="https://ahmedshaikh77.github.io/Muhammad-Ahmed-Portfolio/assets/images/social-preview.png">
   <link rel="stylesheet" href="assets/css/styles.css?v=20260905-2">
-  <link rel="stylesheet" href="assets/css/effects.css?v=20260903-2">
+  <link rel="stylesheet" href="assets/css/effects.css?v=20260907-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,14 +79,47 @@
         </div>
       </div>
       <aside class="hero__system" aria-label="Engineering focus">
-        <p class="system-label">SYSTEM VIEW</p>
+        <div class="system-heading"><p class="system-label">SYSTEM VIEW</p><span class="system-indicator" aria-hidden="true"></span></div>
+        <p class="system-caption">From sensing to motion.</p>
+        <svg class="signal-board" viewBox="0 0 296 252" role="img" aria-labelledby="signal-title signal-description" focusable="false">
+          <title id="signal-title">Robotics control loop</title>
+          <desc id="signal-description">Illustrative signal flow: sensors to controller to motors to feedback, then back to sensing. Not live telemetry.</desc>
+          <g class="signal-traces" fill="none">
+            <path d="M66 65H230V187H66Z"/>
+            <path class="signal-traces__secondary" d="M66 16V8H148V34H230M280 65H288V187H280M66 236V244H148V218H230M16 65H8V187H16"/>
+            <path class="signal-arrows" d="m146 61 4 4-4 4m80 54 4 4 4-4m-84 60-4 4 4 4m-88-56 4-4 4 4"/>
+          </g>
+          <g class="signal-node signal-node--sense">
+            <rect x="22" y="24" width="88" height="82" rx="10"/>
+            <g class="signal-icon"><circle cx="66" cy="58" r="4"/><path d="M55 47a16 16 0 0 1 22 0M48 40a26 26 0 0 1 36 0M66 62v9m-9 0h18"/></g>
+            <text x="66" y="91">SENSORS</text>
+          </g>
+          <g class="signal-node signal-node--decide">
+            <rect x="186" y="24" width="88" height="82" rx="10"/>
+            <g class="signal-icon"><rect x="217" y="43" width="26" height="26" rx="3"/><path d="M223 37v6m7-6v6m7-6v6m-14 26v6m7-6v6m7-6v6m-26-26h6m-6 7h6m-6 7h6m26-14h6m-6 7h6m-6 7h6m-24-11h10v10h-10z"/></g>
+            <text x="230" y="91">CONTROLLER</text>
+          </g>
+          <g class="signal-node signal-node--act">
+            <rect x="186" y="146" width="88" height="82" rx="10"/>
+            <g class="signal-icon"><path d="M215 198h32m-27 0v-10l-8-9 13-18 17 10-8 12m-9-22 4-7m13 17 7 4m-15 8 7 5m-7-5-5 6"/><circle cx="225" cy="161" r="3"/><circle cx="213" cy="179" r="3"/></g>
+            <text x="230" y="213">MOTORS</text>
+          </g>
+          <g class="signal-node signal-node--verify">
+            <rect x="22" y="146" width="88" height="82" rx="10"/>
+            <g class="signal-icon"><path d="M46 190h8l5-19 9 27 6-18h12M46 165v33h40"/></g>
+            <text x="66" y="213">FEEDBACK</text>
+          </g>
+          <text class="signal-center" x="148" y="123">CLOSED</text>
+          <text class="signal-center" x="148" y="137">LOOP</text>
+          <circle class="signal-packet" cx="66" cy="65" r="4" aria-hidden="true"/>
+        </svg>
         <ol>
-          <li><span>01</span> Sense</li>
-          <li><span>02</span> Decide</li>
-          <li><span>03</span> Act</li>
-          <li><span>04</span> Verify</li>
+          <li class="system-step--sense"><span>01</span> Sense</li>
+          <li class="system-step--decide"><span>02</span> Decide</li>
+          <li class="system-step--act"><span>03</span> Act</li>
+          <li class="system-step--verify"><span>04</span> Verify</li>
         </ol>
-        <button class="motion-toggle" type="button" hidden>Pause effects</button>
+        <button class="motion-toggle" type="button" hidden>Pause animations</button>
       </aside>
     </section>
 
@@ -275,6 +308,6 @@
   <footer class="site-footer"><p>Muhammad Ahmed</p></footer>
   <div class="radar-cursor" aria-hidden="true" hidden><svg viewBox="0 0 32 32" focusable="false"><circle class="r-ring" cx="16" cy="16" r="11"/><circle class="r-ring2" cx="16" cy="16" r="6.5"/><g class="r-tick"><path d="M16 3v3M16 26v3M3 16h3M26 16h3"/></g><circle class="r-blip" cx="21" cy="11.5" r="1.1"/><circle class="r-blip r-blip--second" cx="11" cy="20.5" r="1.1"/><g class="r-sweep"><path class="r-seg" d="M16 16L16 5A11 11 0 0 0 6.47 10.5Z"/><path class="r-line" d="M16 16V5"/></g><circle class="r-dot" cx="16" cy="16" r="1.7"/></svg></div>
   <script src="assets/js/main.js?v=20260903-2" defer></script>
-  <script src="assets/js/effects.js?v=20260903-2" defer></script>
+  <script src="assets/js/effects.js?v=20260907-1" defer></script>
 </body>
 </html>
