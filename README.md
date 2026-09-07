@@ -17,7 +17,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 - “Schedule a meeting” booking action through Calendly and an “Email” link to the Duke email address
 - About, education, and published research before the project case studies
 - Grouped technical skills and source-linked recognition
-- Desktop radar cursor, animated circuit traces, and a robotics signal-flow illustration
+- Desktop radar cursor, with animated circuit traces and a robotics signal-flow illustration on desktop and mobile
 - Accurate project status and validation boundaries
 - Responsive layouts for mobile, tablet, and desktop
 - Keyboard-operable navigation and reduced-motion support
@@ -73,7 +73,7 @@ The site uses semantic landmarks and heading order, a skip link, visible keyboar
 
 On supported desktop layouts, the radar replaces the native pointer while it is active and never blocks interaction. The native pointer returns whenever the effect is paused, hidden, or unavailable. Pink circuit traces sit beside the introduction copy; a signal packet follows Sensors → Controller → Motors → Feedback while Sense / Decide / Act / Verify highlights advance together. This is an illustrative control loop, not live telemetry or a claim about project performance.
 
-One elapsed-time animation loop is capped at 24 paints per second and a pixel density of 2. It stops when the introduction is offscreen or the tab is hidden. “Pause animations” / “Play animations” preserves the current signal position. Small/touch layouts and reduced-motion preferences show a static schematic without a custom cursor or background animation. Core content and the schematic remain available without JavaScript.
+One elapsed-time animation loop is capped at 24 paints per second and a pixel density of 2. It stops when the introduction is offscreen or the tab is hidden. “Pause animations” / “Play animations” preserves the current signal position and works on touchscreens. Phones and tablets animate the same signal loop, with two background circuit paths restricted to the card area on stacked layouts. Touch input never stops the signal animation; only the radar cursor requires a wide layout and a fine, hovering pointer. Reduced-motion preferences retain a static schematic. Core content and the schematic remain available without JavaScript.
 
 ## Content sources
 

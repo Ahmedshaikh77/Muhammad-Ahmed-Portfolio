@@ -16,9 +16,9 @@
   } catch {
     // Canvas is optional; navigation and the pointer enhancement remain independent.
   }
-  const motionQuery = window.matchMedia(
-    '(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
-  );
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+  const pointerQuery = window.matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)');
+  const wideLayoutQuery = window.matchMedia('(min-width: 900px)');
   let manuallyPaused = false;
   let touchInput = false;
   let heroVisible = false;
@@ -34,7 +34,8 @@
   // Coordinates match the four nodes in the decorative signal-board SVG.
   const signalNodes = [[66, 65], [230, 65], [230, 187], [66, 187]];
 
-  const enabled = () => motionQuery.matches && !manuallyPaused && !touchInput && !document.hidden;
+  const enabled = () => motionQuery.matches && !manuallyPaused && !document.hidden;
+  const radarEnabled = () => enabled() && pointerQuery.matches && !touchInput;
   const hideRadar = () => {
     radar.hidden = true;
     document.documentElement.removeAttribute('data-radar-active');
@@ -42,22 +43,32 @@
 
   function sizeStream() {
     const bounds = hero.getBoundingClientRect();
+    const systemTop = system ? system.getBoundingClientRect().top - bounds.top : 0;
+    const compact = !wideLayoutQuery.matches;
+    // The stacked phone layout reserves the background for the card, not the text above it.
+    const canvasTop = compact && system ? Math.max(0, Math.min(bounds.height - 1, systemTop - 24)) : 0;
     width = Math.max(1, Math.ceil(bounds.width));
-    height = Math.max(1, Math.ceil(bounds.height));
+    height = Math.max(1, Math.ceil(bounds.height - canvasTop));
+    canvas.style.top = `${canvasTop}px`;
+    canvas.style.height = `${height}px`;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.ceil(width * dpr);
     canvas.height = Math.ceil(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
     const copyRight = copy ? copy.getBoundingClientRect().right - bounds.left : width * 0.68;
-    const boardTop = system ? system.getBoundingClientRect().top - bounds.top : height * 0.4;
+    const boardTop = system ? systemTop - canvasTop : height * 0.4;
     const left = Math.min(width - 70, Math.max(width * 0.6, copyRight + 16));
     // Route the background beside the copy and behind the opaque system card.
-    traces = [
+    const paths = compact ? [
+      [[8, 42], [8, 12], [width - 12, 12], [width - 12, height - 18], [32, height - 18]],
+      [[width - 28, 24], [28, 24], [28, height - 36], [width - 6, height - 36], [width - 6, 72]],
+    ] : [
       [[left, 22], [left, Math.max(70, boardTop + 66)], [width - 60, Math.max(70, boardTop + 66)]],
       [[left + 24, 42], [width - 16, 42], [width - 16, height - 16], [left + 24, height - 16]],
       [[width - 54, 10], [width - 54, Math.max(55, boardTop - 22)], [left + 40, Math.max(55, boardTop - 22)], [left + 40, height - 36]],
       [[left - 12, height - 12], [width - 4, height - 12], [width - 4, 82], [width - 80, 82]],
-    ].map((points) => {
+    ];
+    traces = paths.map((points) => {
       const lengths = points.slice(1).map((point, index) =>
         Math.hypot(point[0] - points[index][0], point[1] - points[index][1]));
       return { points, lengths, total: lengths.reduce((sum, length) => sum + length, 0) };
@@ -138,7 +149,7 @@
     toggle.hidden = !motionQuery.matches;
     // This is an action button with a changing label, not a stable-label ARIA toggle.
     toggle.textContent = manuallyPaused ? 'Play animations' : 'Pause animations';
-    if (!enabled()) hideRadar();
+    if (!radarEnabled()) hideRadar();
     canvas.hidden = !enabled() || !context;
     if (enabled() && heroVisible && context) {
       hero.setAttribute('data-animations', 'running');
@@ -170,7 +181,7 @@
 
   document.addEventListener('pointermove', (event) => {
     updateInput(event);
-    if (!enabled() || !document.hasFocus() || event.pointerType === 'touch') {
+    if (!radarEnabled() || !document.hasFocus() || event.pointerType === 'touch') {
       hideRadar();
       return;
     }
@@ -191,6 +202,11 @@
   window.addEventListener('blur', hideRadar);
   document.addEventListener('visibilitychange', syncEffects);
   motionQuery.addEventListener('change', syncEffects);
+  pointerQuery.addEventListener('change', syncEffects);
+  wideLayoutQuery.addEventListener('change', () => {
+    needsSize = true;
+    syncEffects();
+  });
   window.addEventListener('resize', () => {
     needsSize = true;
     measureVisibility();

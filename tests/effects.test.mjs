@@ -29,6 +29,7 @@ function browser(options = {}) {
   const document = new EventTarget();
   const window = new EventTarget();
   const hero = new Element();
+  if (options.heroRect) hero.rect = options.heroRect;
   if (options.heroOffscreen) hero.rect = { ...hero.rect, top: -800, bottom: -160 };
   const canvas = new Element();
   const radar = new Element();
@@ -42,6 +43,11 @@ function browser(options = {}) {
     ['.radar-cursor', radar], ['.motion-toggle', toggle],
     ['.signal-packet', packet],
   ]);
+  if (options.systemRect) {
+    const system = new Element();
+    system.rect = options.systemRect;
+    elements.set('.hero__system', system);
+  }
   document.querySelector = (selector) => elements.get(selector) ?? null;
   document.documentElement = new Element();
   document.hidden = false;
@@ -191,9 +197,8 @@ for (const [name, conditions] of [
   ['narrow screens', { width: 899 }],
   ['non-hover input', { hover: false }],
   ['coarse pointers', { fine: false }],
-  ['reduced-motion preference', { reduced: true }],
 ]) {
-  test(`${name} prevent effects and react to preference changes`, () => {
+  test(`${name} hide only the radar while signal animation continues`, () => {
     const page = browser();
     page.move();
     assert.equal(page.radar.hidden, false);
@@ -202,9 +207,9 @@ for (const [name, conditions] of [
     assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
     page.move();
     assert.equal(page.radar.hidden, true);
-    assert.equal(page.toggle.hidden, true);
-    assert.equal(page.frames.size, 0);
-    assert.equal(page.hero.getAttribute('data-animations'), null);
+    assert.equal(page.toggle.hidden, false);
+    assert.equal(page.frames.size, 1);
+    assert.equal(page.hero.getAttribute('data-animations'), 'running');
     page.setConditions({ width: 900, hover: true, fine: true, reduced: false });
     page.move();
     assert.equal(page.radar.hidden, false);
@@ -212,8 +217,8 @@ for (const [name, conditions] of [
 }
 
 for (const [name, options] of [
-  ['a narrow viewport', { width: 899 }],
   ['reduced motion', { reduced: true }],
+  ['reduced motion on a phone', { width: 390, hover: false, fine: false, reduced: true }],
 ]) {
   test(`${name} starts as a static hero without scheduling animation`, () => {
     const page = browser(options);
@@ -506,15 +511,17 @@ test('resizing updates canvas dimensions, including after a manual pause', () =>
   assert.equal(page.frames.size, 1);
 });
 
-test('a touch interaction suspends both effects until fine-pointer input resumes', () => {
+test('touch hides the radar without stopping the signal loop or losing manual pause', () => {
   const page = browser();
   assert.equal(page.frames.size, 1);
   page.move();
   emit(page.document, 'pointerdown', { pointerType: 'touch' });
-  assert.equal(page.frames.size, 0);
+  assert.equal(page.frames.size, 1);
   assert.equal(page.radar.hidden, true);
-  assert.equal(page.canvas.hidden, true);
-  assert.equal(page.hero.getAttribute('data-animations'), null);
+  assert.equal(page.canvas.hidden, false);
+  assert.equal(page.hero.getAttribute('data-animations'), 'running');
+  page.frame(100);
+  assertPacketAt(page, [74.2, 65]);
   page.move();
   assert.equal(page.radar.hidden, false);
   assert.equal(page.frames.size, 1);
@@ -524,4 +531,66 @@ test('a touch interaction suspends both effects until fine-pointer input resumes
   page.move();
   assert.equal(page.frames.size, 0);
   assert.equal(page.radar.hidden, true);
+});
+
+for (const width of [320, 390, 768]) {
+  test(`a ${width}px touch device animates on load and can pause and resume with touch`, () => {
+    const page = browser({ width, hover: false, fine: false });
+    assert.equal(page.toggle.hidden, false);
+    assert.equal(page.canvas.hidden, false);
+    assert.equal(page.frames.size, 1);
+    page.move(40, 60, 'touch');
+    page.frame(100);
+    assertPacketAt(page, [74.2, 65]);
+    assert.ok(tracePaths(page.drawing).length > 0);
+    assert.equal(page.radar.hidden, true);
+    assert.equal(page.document.documentElement.getAttribute('data-radar-active'), null);
+    emit(page.document, 'pointerdown', { pointerType: 'touch' });
+    emit(page.toggle, 'click');
+    page.frame(10000);
+    assert.equal(page.frames.size, 0);
+    assertPacketAt(page, [74.2, 65]);
+    emit(page.document, 'pointerdown', { pointerType: 'touch' });
+    emit(page.toggle, 'click');
+    page.frame(10100);
+    assertPacketAt(page, [82.4, 65]);
+    assert.equal(page.frames.size, 1);
+    assert.equal(page.radar.hidden, true);
+  });
+}
+
+test('mobile canvas stays around the system card instead of extending behind the copy', () => {
+  const page = browser({
+    width: 390, hover: false, fine: false, dpr: 3,
+    heroRect: { left: 20, right: 370, top: 70, bottom: 1470, width: 350, height: 1400 },
+    systemRect: { left: 20, right: 370, top: 900, bottom: 1390, width: 350, height: 490 },
+  });
+  assert.equal(page.canvas.style.top, '806px');
+  assert.equal(page.canvas.style.height, '594px');
+  assert.equal(page.canvas.width, 700);
+  assert.equal(page.canvas.height, 1188);
+  page.frame(100);
+  const paths = tracePaths(page.drawing);
+  assert.ok(paths.length > 0);
+  assert.ok(paths.flat().every(([x, y]) => x >= 0 && x <= 350 && y >= 0 && y <= 594));
+});
+
+test('phone animation stops offscreen, hidden, and with reduced motion without losing phase', () => {
+  const page = browser({ width: 390, hover: false, fine: false });
+  page.frame(100);
+  assertPacketAt(page, [74.2, 65]);
+  for (const [pause, resume] of [
+    [() => page.setVisible(false), () => page.setVisible(true)],
+    [() => page.setHidden(true), () => page.setHidden(false)],
+    [() => page.setConditions({ reduced: true }), () => page.setConditions({ reduced: false })],
+  ]) {
+    pause();
+    assert.equal(page.frames.size, 0);
+    assert.equal(page.hero.getAttribute('data-animations'), null);
+    page.frame(10000);
+    assertPacketAt(page, [74.2, 65]);
+    resume();
+    assert.equal(page.frames.size, 1);
+    assert.equal(page.hero.getAttribute('data-animations'), 'running');
+  }
 });
