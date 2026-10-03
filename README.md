@@ -17,6 +17,7 @@ This portfolio presents selected robotics and embedded systems work through evid
 - “Schedule a meeting” booking action through Calendly and an “Email” link to the Duke email address
 - About, education, and published research before the project case studies
 - Grouped technical skills and source-linked recognition
+- Owner-approved Agentic AI & Intelligent Automation skills covering LLM workflows, AI-assisted development, workflow automation, and bot development
 - Desktop radar cursor, with animated circuit traces and a robotics signal-flow illustration on desktop and mobile
 - Accurate project status and validation boundaries
 - Responsive layouts for mobile, tablet, and desktop
@@ -78,6 +79,8 @@ One elapsed-time animation loop is capped at 24 paints per second and a pixel de
 ## Content sources
 
 Skills draw from the supplied public resume, the previous portfolio, and the owner's LinkedIn project descriptions. They are grouped by discipline without invented proficiency scores. Research performance claims remain subject to the project evidence boundaries.
+
+The Agentic AI & Intelligent Automation card uses the owner's approved description of applied AI-agent use and custom tool/bot development. It does not claim model training, production-scale autonomous systems, or development of every underlying agent platform.
 
 The medical robotics education entry records a Duke University graduate certificate.
 

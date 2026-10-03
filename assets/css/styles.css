@@ -685,6 +685,12 @@ main > section:not(.hero) {
   color: var(--accent-strong);
 }
 
+.capability__summary {
+  max-width: 88ch;
+  margin-bottom: 22px;
+  color: var(--muted);
+}
+
 .capability li {
   background: var(--bg);
   white-space: normal;
@@ -878,7 +884,8 @@ main > section:not(.hero) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .capability--research { grid-column: 1 / -1; }
+  .capability--research,
+  .capability--agentic { grid-column: 1 / -1; }
 }
 
 @media (min-width: 768px) {
